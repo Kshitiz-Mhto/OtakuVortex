@@ -1,7 +1,8 @@
-package com.animehub.otakuvortex
+package com.animehub.otakuvortex.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.animehub.otakuvortex.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

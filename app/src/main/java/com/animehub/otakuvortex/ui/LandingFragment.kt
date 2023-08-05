@@ -1,4 +1,4 @@
-package com.animehub.otakuvortex
+package com.animehub.otakuvortex.ui
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
