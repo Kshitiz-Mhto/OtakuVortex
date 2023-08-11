@@ -1,12 +1,17 @@
 package com.animehub.otakuvortex.ui.di
 
 import com.animehub.otakuvortex.data.remote.JikanApi
+import com.animehub.otakuvortex.data.repository.TopCharacterRepositoryImpl
+import com.animehub.otakuvortex.data.repository.anime.AnimeRepositoryImpl
+import com.animehub.otakuvortex.data.repository.manga.MangaRepositoryImpl
+import com.animehub.otakuvortex.domain.repository.TopCharacterRepository
+import com.animehub.otakuvortex.domain.repository.anime.AnimeRepository
+import com.animehub.otakuvortex.domain.repository.manga.MangaRepository
 import com.animehub.otakuvortex.util.Constants.BASE_URL
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import dagger.hilt.internal.processedrootsentinel.ProcessedRootSentinel
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -36,6 +41,24 @@ object AppModule {
             .addConverterFactory(GsonConverterFactory.create())
             .build()
             .create(JikanApi::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun provideAnimeRepository(jikenApi: JikanApi): AnimeRepository{
+        return AnimeRepositoryImpl(jikanApi = jikenApi)
+    }
+
+    @Provides
+    @Singleton
+    fun provideMangaRepository(jikenApi: JikanApi): MangaRepository {
+        return MangaRepositoryImpl(jikanApi = jikenApi)
+    }
+
+    @Provides
+    @Singleton
+    fun provideTopCharacterRepository(jikenApi: JikanApi): TopCharacterRepository{
+        return TopCharacterRepositoryImpl(jikanApi = jikenApi)
     }
 
 }
