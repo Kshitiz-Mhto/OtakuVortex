@@ -1,4 +1,4 @@
-package com.animehub.otakuvortex.ui
+package com.animehub.otakuvortex.presentation.ui
 
 import android.os.Build
 import android.os.Bundle

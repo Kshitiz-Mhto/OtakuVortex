@@ -1,4 +1,4 @@
-package com.animehub.otakuvortex.ui.di
+package com.animehub.otakuvortex.presentation.di
 
 import com.animehub.otakuvortex.data.remote.JikanApi
 import com.animehub.otakuvortex.data.repository.TopCharacterRepositoryImpl

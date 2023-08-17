@@ -17,7 +17,7 @@
         android:theme="@style/Theme.OtakuVortex"
         tools:targetApi="31">
         <activity
-            android:name=".ui.MainActivity"
+            android:name=".presentation.ui.MainActivity"
             android:exported="true"
             android:screenOrientation="portrait">
             <intent-filter>
