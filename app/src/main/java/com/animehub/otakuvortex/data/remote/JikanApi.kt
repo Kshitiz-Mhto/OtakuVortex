@@ -9,12 +9,12 @@ import retrofit2.http.Query
 interface JikanApi {
 
     @GET("/v4/top/anime")
-    suspend fun getTopAnime(@Query("page") page: Int): TopAnimeDto
+    suspend fun getTopAnime(@Query("page") page: Int = 1): TopAnimeDto
 
     @GET("/v4/top/manga")
-    suspend fun getTopManga(@Query("page") page: Int): TopMangaDto
+    suspend fun getTopManga(@Query("page") page: Int = 1): TopMangaDto
 
     @GET("/v4/top/characters")
-    suspend fun getTopCharacters(@Query("page") page: Int): TopCharacterDto
+    suspend fun getTopCharacters(@Query("page") page: Int = 1): TopCharacterDto
 
 }
