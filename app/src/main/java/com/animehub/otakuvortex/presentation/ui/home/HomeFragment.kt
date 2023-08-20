@@ -14,7 +14,11 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.animehub.otakuvortex.databinding.FragmentHomeBinding
 import com.animehub.otakuvortex.paging.anime.TopAnimePagingAdaptor
+import com.animehub.otakuvortex.paging.manga.TopMangaPadingAdaptor
+import com.animehub.otakuvortex.paging.topcharacter.TopCharacterPagingAdaptor
 import com.animehub.otakuvortex.presentation.ui.home.anime.topanime.TopAnimeViewModel
+import com.animehub.otakuvortex.presentation.ui.home.manga.topmanga.TopMangaViewModel
+import com.animehub.otakuvortex.presentation.ui.home.topcharacter.TopCharacterViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -22,10 +26,19 @@ import kotlinx.coroutines.launch
 class HomeFragment : Fragment() {
 
     private lateinit var binding: FragmentHomeBinding
+
 //    lateinit var topAnimeViewModel: TopAnimeViewModel
     private val topAnimeViewModel: TopAnimeViewModel by viewModels()
+    private val topMangaViewModel: TopMangaViewModel by viewModels()
+    private val topCharacterViewModel: TopCharacterViewModel by viewModels()
+
     lateinit var topAnimeRecyclerView: RecyclerView
-    lateinit var adaptor: TopAnimePagingAdaptor
+    lateinit var topMangaRecyclerView: RecyclerView
+    lateinit var topCharacterRecyclerView: RecyclerView
+
+    lateinit var topAnimeAdaptor: TopAnimePagingAdaptor
+    lateinit var topMangaAdaptor: TopMangaPadingAdaptor
+    lateinit var topCharacterAdaptor: TopCharacterPagingAdaptor
 
     @SuppressLint("NotifyDataSetChanged")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -43,17 +56,30 @@ class HomeFragment : Fragment() {
 
         topAnimeRecyclerView = binding.topAnimeRecyclerview
         topAnimeRecyclerView.setBackgroundColor(Color.TRANSPARENT)
-        topAnimeRecyclerView.layoutManager  =  LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
-        adaptor = TopAnimePagingAdaptor()
-        topAnimeRecyclerView.adapter = adaptor
+        topAnimeRecyclerView.layoutManager  = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+        topAnimeAdaptor = TopAnimePagingAdaptor()
+        topAnimeRecyclerView.adapter = topAnimeAdaptor
+
+        topMangaRecyclerView = binding.topMangaRecyclerview
+        topMangaRecyclerView.setBackgroundColor(Color.TRANSPARENT)
+        topMangaRecyclerView.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+        topMangaAdaptor = TopMangaPadingAdaptor()
+        topMangaRecyclerView.adapter = topMangaAdaptor
+
+        topCharacterRecyclerView = binding.topCharacterRecyclerview
+        topCharacterRecyclerView.setBackgroundColor(Color.TRANSPARENT)
+        topCharacterRecyclerView.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+        topCharacterAdaptor = TopCharacterPagingAdaptor()
+        topCharacterRecyclerView.adapter = topCharacterAdaptor
 
         showTopAnimeList()
+        showTopMangaList()
+        showTopCharacterList()
 
         return binding.root
     }
 
     private fun showTopAnimeList() {
-
         viewLifecycleOwner.lifecycleScope.launch {
             topAnimeViewModel.topAnimeListValue.collect { state ->
                 if (state.isLoading) {
@@ -63,11 +89,42 @@ class HomeFragment : Fragment() {
                     Log.i("UI error", "lol")
                 }else if (state.topAnimeList != null) {
                     val topAnimeList = state.topAnimeList
-                    adaptor.submitData(lifecycle, topAnimeList)
+                    topAnimeAdaptor.submitData(lifecycle, topAnimeList)
                 }
             }
         }
+    }
 
+    private fun showTopMangaList(){
+        viewLifecycleOwner.lifecycleScope.launch {
+            topMangaViewModel.topMangaListValue.collect{ state ->
+                if (state.isLoading) {
+                    Log.i("UI load", "lol")
+                }
+                else if(state.error.isNotEmpty()){
+                    Log.i("UI error", "lol")
+                }else if (state.topMangaList != null) {
+                    val topMangaList = state.topMangaList
+                    topMangaAdaptor.submitData(lifecycle, topMangaList)
+                }
+            }
+        }
+    }
+
+    private fun showTopCharacterList(){
+        viewLifecycleOwner.lifecycleScope.launch {
+            topCharacterViewModel.topCharacterListValue.collect{ state ->
+                if (state.isLoading) {
+                    Log.i("UI load", "lol")
+                }
+                else if(state.error.isNotEmpty()){
+                    Log.i("UI error", "lol")
+                }else if (state.topCharacterList != null) {
+                    val topCharacterList = state.topCharacterList
+                    topCharacterAdaptor.submitData(lifecycle, topCharacterList)
+                }
+            }
+        }
     }
 
 }
