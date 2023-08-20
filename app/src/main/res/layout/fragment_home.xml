@@ -54,13 +54,13 @@
         app:layout_constraintTop_toBottomOf="@+id/topLinearLayout">
 
         <LinearLayout
-            android:id="@+id/verticalLayout2"
+            android:id="@+id/verticalLayout1"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
 
             <LinearLayout
-                android:id="@+id/linearLayout3"
+                android:id="@+id/linearLayout2"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:paddingStart="7dp"
@@ -68,19 +68,19 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/etNowplaying"
+                    android:id="@+id/etTopAnime"
                     android:layout_width="270dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_weight="1"
-                    android:fontFamily="@font/poppins_medium"
+                    android:fontFamily="@font/montserrat_semibold"
                     android:text="Top Anime"
                     android:textColor="#FFFDFD"
                     android:textSize="30sp"
                     android:textStyle="bold" />
 
                 <ImageButton
-                    android:id="@+id/btnNowPlayingMore"
+                    android:id="@+id/btnTopAnimeMore"
                     android:layout_width="40dp"
                     android:layout_height="36dp"
                     android:layout_weight="1"
@@ -93,9 +93,101 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/topAnimeRecyclerview"
                 android:layout_width="match_parent"
-                android:layout_height="500dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="6dp"
                 android:orientation="horizontal"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <LinearLayout
+                android:id="@+id/linearLayout3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingStart="7dp"
+                android:paddingEnd="2dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/etTopManga"
+                    android:layout_width="270dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/montserrat_semibold"
+                    android:text="Top Manga"
+                    android:textColor="#FFFDFD"
+                    android:textSize="30sp"
+                    android:textStyle="bold" />
+
+                <ImageButton
+                    android:id="@+id/btnTopMangaMore"
+                    android:layout_width="40dp"
+                    android:layout_height="36dp"
+                    android:layout_weight="1"
+                    android:layout_marginTop="2dp"
+                    android:background="@android:color/transparent"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/btn_more" />
+            </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/topMangaRecyclerview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
+                app:layout_constraintVertical_bias="0.0" />
+            <LinearLayout
+                android:id="@+id/linearLayout4"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingStart="7dp"
+                android:paddingEnd="2dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/etTopCharacter"
+                    android:layout_width="270dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/montserrat_semibold"
+                    android:text="Top Kyarakutā"
+                    android:textColor="#FFFDFD"
+                    android:textSize="30sp"
+                    android:textStyle="bold" />
+
+                <ImageButton
+                    android:id="@+id/btnTopCharacterMore"
+                    android:layout_width="40dp"
+                    android:layout_height="36dp"
+                    android:layout_weight="1"
+                    android:layout_marginTop="2dp"
+                    android:background="@android:color/transparent"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/btn_more" />
+            </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/topCharacterRecyclerview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:orientation="horizontal"
+                android:paddingBottom="100dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
