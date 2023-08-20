@@ -17,21 +17,25 @@ class TopMangaViewModel @Inject constructor(
     private val topMangaUseCase: TopMangaUseCase
 ): ViewModel() {
 
-    private val topMangaListValue = MutableStateFlow(TopMangaListState())
-    var _topMangaListValue: StateFlow<TopMangaListState> = topMangaListValue
+    init {
+        getTopMangaList()
+    }
+
+    private val _topMangaListValue = MutableStateFlow(TopMangaListState())
+    var topMangaListValue: StateFlow<TopMangaListState> = _topMangaListValue
 
     fun getTopMangaList() = viewModelScope.launch (Dispatchers.IO){
         topMangaUseCase().collect{
             when (it) {
                 is ResponseState.Success -> {
-                    topMangaListValue.value =
+                    _topMangaListValue.value =
                         TopMangaListState(topMangaList = it.data)
                 }
                 is ResponseState.Loading -> {
-                    topMangaListValue.value = TopMangaListState(isLoading = true)
+                    _topMangaListValue.value = TopMangaListState(isLoading = true)
                 }
                 is ResponseState.Error -> {
-                    topMangaListValue.value =
+                    _topMangaListValue.value =
                         TopMangaListState(error = it.message ?: "An Unexcepted Error")
                 }
             }
