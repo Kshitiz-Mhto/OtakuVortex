@@ -32,13 +32,13 @@ class LandingFragment : Fragment() {
             delayedNavigation = Runnable {
                 navigateToHomeFragment()
             }
-            binding.root.postDelayed(delayedNavigation!!, 3000)
+            binding.root.postDelayed(delayedNavigation!!, 2000)
         } else {
             // For API versions less than 28, use the Handler
             delayedNavigation = Runnable {
                 navigateToHomeFragment()
             }
-            handler.postDelayed(delayedNavigation!!, 3000)
+            handler.postDelayed(delayedNavigation!!, 2000)
         }
 
         return binding.root
