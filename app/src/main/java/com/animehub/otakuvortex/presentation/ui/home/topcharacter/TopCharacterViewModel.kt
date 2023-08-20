@@ -16,22 +16,26 @@ class TopCharacterViewModel @Inject constructor(
     private val topCharacterUseCase: TopCharacterUseCase
 ): ViewModel() {
 
-    private val topCharacterListValue = MutableStateFlow(TopCharacterListState())
-    var _topCharacterListValue : StateFlow<TopCharacterListState> = topCharacterListValue
+    init {
+        getTopCharacter()
+    }
+
+    private val _topCharacterListValue = MutableStateFlow(TopCharacterListState())
+    var topCharacterListValue : StateFlow<TopCharacterListState> = _topCharacterListValue
 
     fun getTopCharacter() = viewModelScope.launch(
       Dispatchers.IO){
         topCharacterUseCase().collect{
             when (it) {
                 is ResponseState.Success -> {
-                    topCharacterListValue.value =
+                    _topCharacterListValue.value =
                         TopCharacterListState(topCharacterList = it.data)
                 }
                 is ResponseState.Loading -> {
-                    topCharacterListValue.value = TopCharacterListState(isLoading = true)
+                    _topCharacterListValue.value = TopCharacterListState(isLoading = true)
                 }
                 is ResponseState.Error -> {
-                    topCharacterListValue.value =
+                    _topCharacterListValue.value =
                         TopCharacterListState(error = it.message ?: "An Unexcepted Error")
                 }
             }
