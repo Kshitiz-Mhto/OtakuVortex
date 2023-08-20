@@ -1,10 +1,10 @@
 package com.animehub.otakuvortex.domain.repository.anime
 
-import com.animehub.otakuvortex.data.remote.dto.anime.topanime.TopAnimeDto
+import androidx.paging.PagingData
+import com.animehub.otakuvortex.domain.modal.anime.topanime.TopAnimeData
+import kotlinx.coroutines.flow.Flow
 
 interface AnimeRepository {
-
-    suspend fun getTopAnime(page: Int): TopAnimeDto
-
+    suspend fun getTopAnime(): Flow<PagingData<TopAnimeData>>
 
 }
