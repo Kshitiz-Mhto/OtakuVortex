@@ -8,26 +8,63 @@
     android:background="@color/perfectbg"
     tools:context=".presentation.ui.home.HomeFragment">
 
+    <LinearLayout
+        android:id="@+id/topLinearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="5dp"
+        android:paddingBottom="12dp"
+        android:background="@android:color/transparent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageButton
+            android:id="@+id/btnProfile"
+            android:layout_width="67dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginStart="2dp"
+            android:background="@android:color/transparent"
+            android:scaleType="fitCenter"
+            android:src="@drawable/logo_bg_removed" />
+
+        <TextView
+            android:id="@+id/etProfileName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="15dp"
+            android:paddingEnd="15dp"
+            android:layout_weight="1"
+            android:fontFamily="@font/poppins_light"
+            android:gravity="right"
+            android:text="Welcome Peter👋"
+            android:textColor="#FFFFFF"
+            android:textSize="17sp" />
+    </LinearLayout>
+
     <ScrollView
         android:id="@+id/homeScrollView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/topLinearLayout">
 
         <LinearLayout
             android:id="@+id/verticalLayout2"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="20dp"
             android:orientation="vertical">
 
             <LinearLayout
                 android:id="@+id/linearLayout3"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:paddingStart="10dp"
-                android:paddingEnd="10dp"
+                android:paddingStart="7dp"
+                android:paddingEnd="2dp"
                 android:orientation="horizontal">
 
                 <TextView
