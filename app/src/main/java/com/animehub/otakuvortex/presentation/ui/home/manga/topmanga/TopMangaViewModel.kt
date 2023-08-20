@@ -9,8 +9,6 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.cancellable
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -22,12 +20,12 @@ class TopMangaViewModel @Inject constructor(
     private val topMangaListValue = MutableStateFlow(TopMangaListState())
     var _topMangaListValue: StateFlow<TopMangaListState> = topMangaListValue
 
-    fun getTopMangaList(page: Int) = viewModelScope.launch (Dispatchers.IO){
-        topMangaUseCase(page=page).collect{
+    fun getTopMangaList() = viewModelScope.launch (Dispatchers.IO){
+        topMangaUseCase().collect{
             when (it) {
                 is ResponseState.Success -> {
                     topMangaListValue.value =
-                        TopMangaListState(topMangaList = it.data ?: emptyList())
+                        TopMangaListState(topMangaList = it.data)
                 }
                 is ResponseState.Loading -> {
                     topMangaListValue.value = TopMangaListState(isLoading = true)
