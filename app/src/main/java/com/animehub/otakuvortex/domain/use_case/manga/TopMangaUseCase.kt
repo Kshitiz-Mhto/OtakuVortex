@@ -1,6 +1,6 @@
 package com.animehub.otakuvortex.domain.use_case.manga
 
-import com.animehub.otakuvortex.data.remote.dto.manga.topmanga.toTopMangaData
+import androidx.paging.PagingData
 import com.animehub.otakuvortex.domain.modal.mamga.topmanga.TopMangaData
 import com.animehub.otakuvortex.domain.repository.manga.MangaRepository
 import com.animehub.otakuvortex.util.ResponseState
@@ -13,15 +13,12 @@ import javax.inject.Inject
 class TopMangaUseCase @Inject constructor(
     private val repo: MangaRepository
 ) {
-
-    operator fun invoke(page: Int): Flow<ResponseState<List<TopMangaData>>> = flow {
+    operator fun invoke(): Flow<ResponseState<PagingData<TopMangaData>>> = flow {
         try {
-
             emit(ResponseState.Loading())
-            val topMangas = repo.getTopManga(page).data.map {
-                it.toTopMangaData()
+            repo.getTopManga().collect{
+                emit(ResponseState.Success(it))
             }
-            emit(ResponseState.Success(topMangas))
         }catch (e: HttpException){
             emit(ResponseState.Error(e.localizedMessage ?: "Unexcepted Error occured!!"))
         }catch (e: IOException){
