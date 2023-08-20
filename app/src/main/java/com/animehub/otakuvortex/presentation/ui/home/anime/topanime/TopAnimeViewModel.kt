@@ -1,6 +1,5 @@
 package com.animehub.otakuvortex.presentation.ui.home.anime.topanime
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.animehub.otakuvortex.domain.use_case.anime.TopAnimeUseCase
@@ -32,10 +31,8 @@ class TopAnimeViewModel @Inject constructor(
                     is ResponseState.Success -> {
                         val topAnimePagingData = TopAnimeListState(topAnimeList = responseState.data)
                         _topAnimeListValue.value = topAnimePagingData
-                        Log.i("value", responseState.data.toString())
-                        Log.i("value1", _topAnimeListValue.value.toString())
-//                        Log.i("data", responseState.data.toString())
-//                        Log.i("val", _topAnimeListValue.value!!.topAnimeList.toString())
+//                        Log.i("value", responseState.data.toString())
+//                        Log.i("value1", _topAnimeListValue.value.toString())
                         }
                     is ResponseState.Loading -> {
                         val topAnimeListState = TopAnimeListState(isLoading = true)
@@ -46,9 +43,6 @@ class TopAnimeViewModel @Inject constructor(
                         val topAnimeListState = TopAnimeListState(error = responseState.message ?: "An Unexpected Error")
                         _topAnimeListValue.value = topAnimeListState
 //                        Log.i("error", _topAnimeListValue.value.toString())
-                    }
-                    else -> {
-                        // Handle other cases if needed
                     }
                 }
             }
