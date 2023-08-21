@@ -6,19 +6,24 @@ import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.animehub.otakuvortex.R
 import com.animehub.otakuvortex.databinding.FragmentHomeBinding
 import com.animehub.otakuvortex.paging.anime.TopAnimePagingAdaptor
+import com.animehub.otakuvortex.paging.loaderadapter.LoaderAdaptor
 import com.animehub.otakuvortex.paging.manga.TopMangaPadingAdaptor
 import com.animehub.otakuvortex.paging.topcharacter.TopCharacterPagingAdaptor
 import com.animehub.otakuvortex.presentation.ui.home.anime.topanime.TopAnimeViewModel
 import com.animehub.otakuvortex.presentation.ui.home.manga.topmanga.TopMangaViewModel
 import com.animehub.otakuvortex.presentation.ui.home.topcharacter.TopCharacterViewModel
+import com.animehub.otakuvortex.presentation.ui.search.SearchmeFragment
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -58,19 +63,28 @@ class HomeFragment : Fragment() {
         topAnimeRecyclerView.setBackgroundColor(Color.TRANSPARENT)
         topAnimeRecyclerView.layoutManager  = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         topAnimeAdaptor = TopAnimePagingAdaptor()
-        topAnimeRecyclerView.adapter = topAnimeAdaptor
+        topAnimeRecyclerView.adapter = topAnimeAdaptor.withLoadStateHeaderAndFooter(
+            header = LoaderAdaptor(),
+            footer = LoaderAdaptor()
+        )
 
         topMangaRecyclerView = binding.topMangaRecyclerview
         topMangaRecyclerView.setBackgroundColor(Color.TRANSPARENT)
         topMangaRecyclerView.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         topMangaAdaptor = TopMangaPadingAdaptor()
-        topMangaRecyclerView.adapter = topMangaAdaptor
+        topMangaRecyclerView.adapter = topMangaAdaptor.withLoadStateHeaderAndFooter(
+            header = LoaderAdaptor(),
+            footer = LoaderAdaptor()
+        )
 
         topCharacterRecyclerView = binding.topCharacterRecyclerview
         topCharacterRecyclerView.setBackgroundColor(Color.TRANSPARENT)
         topCharacterRecyclerView.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         topCharacterAdaptor = TopCharacterPagingAdaptor()
-        topCharacterRecyclerView.adapter = topCharacterAdaptor
+        topCharacterRecyclerView.adapter = topCharacterAdaptor.withLoadStateHeaderAndFooter(
+            header = LoaderAdaptor(),
+            footer = LoaderAdaptor()
+        )
 
         showTopAnimeList()
         showTopMangaList()
