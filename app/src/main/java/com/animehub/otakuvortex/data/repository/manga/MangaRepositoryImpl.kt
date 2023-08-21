@@ -11,7 +11,7 @@ class MangaRepositoryImpl@Inject constructor(
     private val jikanApi: JikanApi
 ): MangaRepository {
     override suspend fun getTopManga() = Pager(
-    config = PagingConfig(pageSize = 25, maxSize = 100),
+    config = PagingConfig(pageSize = 25, maxSize = 75),
     pagingSourceFactory = { TopMangaPagingSource(jikanApi=jikanApi) }
     ).flow
 

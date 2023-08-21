@@ -12,7 +12,7 @@ class AnimeRepositoryImpl @Inject constructor(
 ): AnimeRepository {
 
     override suspend fun getTopAnime() = Pager(
-            config = PagingConfig(pageSize = 25, maxSize = 100),
+            config = PagingConfig(pageSize = 25, maxSize = 75),
             pagingSourceFactory = { TopAnimePagingSource(jikanApi=jikanApi) }
         ).flow
 }

@@ -12,7 +12,7 @@ class TopCharacterRepositoryImpl@Inject constructor(
 ): TopCharacterRepository {
 
     override suspend fun getTopCharacters() = Pager(
-    config = PagingConfig(pageSize = 25, maxSize = 100),
+    config = PagingConfig(pageSize = 25, maxSize = 75),
     pagingSourceFactory = { TopCharacterPagingSource(jikanApi=jikanApi) }
     ).flow
 
