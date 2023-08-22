@@ -3,20 +3,26 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/landingFragment">
+    app:startDestination="@id/homeFragment">
 
-    <fragment
-        android:id="@+id/landingFragment"
-        android:name="com.animehub.otakuvortex.presentation.ui.LandingFragment"
-        android:label="fragment_landing"
-        tools:layout="@layout/fragment_landing" >
-        <action
-            android:id="@+id/action_landingFragment_to_homeFragment"
-            app:destination="@id/homeFragment" />
-    </fragment>
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.animehub.otakuvortex.presentation.ui.home.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_searchmeFragment"
+            app:destination="@id/searchmeFragment"
+            app:enterAnim="@anim/push_down_in"
+            app:popEnterAnim="@anim/push_down_in" />
+    </fragment>
+    <fragment
+        android:id="@+id/searchmeFragment"
+        android:name="com.animehub.otakuvortex.presentation.ui.search.SearchmeFragment"
+        android:label="fragment_searchme"
+        tools:layout="@layout/fragment_searchme" >
+        <action
+            android:id="@+id/action_searchmeFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
 </navigation>
