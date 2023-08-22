@@ -6,15 +6,12 @@ import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
-import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.animehub.otakuvortex.R
 import com.animehub.otakuvortex.databinding.FragmentHomeBinding
 import com.animehub.otakuvortex.paging.anime.TopAnimePagingAdaptor
 import com.animehub.otakuvortex.paging.loaderadapter.LoaderAdaptor
@@ -23,7 +20,6 @@ import com.animehub.otakuvortex.paging.topcharacter.TopCharacterPagingAdaptor
 import com.animehub.otakuvortex.presentation.ui.home.anime.topanime.TopAnimeViewModel
 import com.animehub.otakuvortex.presentation.ui.home.manga.topmanga.TopMangaViewModel
 import com.animehub.otakuvortex.presentation.ui.home.topcharacter.TopCharacterViewModel
-import com.animehub.otakuvortex.presentation.ui.search.SearchmeFragment
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -56,8 +52,6 @@ class HomeFragment : Fragment() {
     ): View? {
 
         binding = FragmentHomeBinding.inflate(inflater, container, false)
-        binding.bottomNavigationView.background = null
-        binding.bottomNavigationView.menu.getItem(2).isEnabled = false
 
         topAnimeRecyclerView = binding.topAnimeRecyclerview
         topAnimeRecyclerView.setBackgroundColor(Color.TRANSPARENT)
