@@ -1,6 +1,8 @@
 package com.animehub.otakuvortex.data.remote
 
+import com.animehub.otakuvortex.data.remote.dto.anime.searchanime.SearchedAnimeDto
 import com.animehub.otakuvortex.data.remote.dto.anime.topanime.TopAnimeDto
+import com.animehub.otakuvortex.data.remote.dto.manga.searchmanga.SearchedMangaDto
 import com.animehub.otakuvortex.data.remote.dto.manga.topmanga.TopMangaDto
 import com.animehub.otakuvortex.data.remote.dto.topcharacter.TopCharacterDto
 import retrofit2.http.GET
@@ -16,5 +18,11 @@ interface JikanApi {
 
     @GET("/v4/top/characters")
     suspend fun getTopCharacters(@Query("page") page: Int = 1): TopCharacterDto
+
+    @GET("/v4/anime")
+    suspend fun getSearchedAime(@Query("q") query: String): SearchedAnimeDto
+
+    @GET("/v4/manga")
+    suspend fun getSearchedManga(@Query("q") query: String): SearchedMangaDto
 
 }
