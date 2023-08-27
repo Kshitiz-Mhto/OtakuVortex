@@ -5,7 +5,6 @@
     android:id="@+id/initialActivity"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:foreground="@drawable/landing_bg"
     tools:context=".presentation.ui.MainActivity">
 
     <fragment
@@ -14,7 +13,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:defaultNavHost="true"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/coordinatorLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -48,10 +47,11 @@
         </com.google.android.material.bottomappbar.BottomAppBar>
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/btnAdd"
+            android:id="@+id/btnSearch"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_add"
+            android:src="@drawable/logo_bg_removed"
+            android:layout_gravity="center"
             app:layout_anchor="@id/bottomAppBar" />
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 

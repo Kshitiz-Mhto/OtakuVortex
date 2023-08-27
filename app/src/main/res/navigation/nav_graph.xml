@@ -23,6 +23,8 @@
         tools:layout="@layout/fragment_searchme" >
         <action
             android:id="@+id/action_searchmeFragment_to_homeFragment"
-            app:destination="@id/homeFragment" />
+            app:destination="@id/homeFragment"
+            app:enterAnim="@anim/push_down_in"
+            app:popEnterAnim="@anim/push_down_in" />
     </fragment>
 </navigation>

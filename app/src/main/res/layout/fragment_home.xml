@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/perfectbg"
@@ -12,10 +11,10 @@
         android:id="@+id/topLinearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
         android:layout_marginTop="5dp"
-        android:paddingBottom="12dp"
         android:background="@android:color/transparent"
+        android:orientation="horizontal"
+        android:paddingBottom="12dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -24,8 +23,8 @@
             android:id="@+id/btnProfile"
             android:layout_width="67dp"
             android:layout_height="48dp"
-            android:layout_marginTop="6dp"
             android:layout_marginStart="4dp"
+            android:layout_marginTop="6dp"
             android:background="@android:color/transparent"
             android:scaleType="fitXY"
             android:src="@drawable/logo_bg_removed" />
@@ -34,11 +33,11 @@
             android:id="@+id/etProfileName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingTop="15dp"
-            android:paddingEnd="15dp"
             android:layout_weight="1"
             android:fontFamily="@font/poppins_light"
             android:gravity="right"
+            android:paddingTop="15dp"
+            android:paddingEnd="15dp"
             android:text="Welcome Peter👋"
             android:textColor="#FFFFFF"
             android:textSize="17sp" />
@@ -57,15 +56,16 @@
             android:id="@+id/verticalLayout1"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginTop="-15dp"
             android:orientation="vertical">
 
             <LinearLayout
                 android:id="@+id/linearLayout2"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:orientation="horizontal"
                 android:paddingStart="7dp"
-                android:paddingEnd="2dp"
-                android:orientation="horizontal">
+                android:paddingEnd="2dp">
 
                 <TextView
                     android:id="@+id/etTopAnime"
@@ -83,8 +83,8 @@
                     android:id="@+id/btnTopAnimeMore"
                     android:layout_width="40dp"
                     android:layout_height="36dp"
-                    android:layout_weight="1"
                     android:layout_marginTop="2dp"
+                    android:layout_weight="1"
                     android:background="@android:color/transparent"
                     android:scaleType="fitCenter"
                     android:src="@drawable/btn_more" />
@@ -102,15 +102,16 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
                 app:layout_constraintVertical_bias="0.0" />
+
             <LinearLayout
                 android:id="@+id/linearLayout3"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:orientation="horizontal"
                 android:paddingStart="7dp"
-                android:paddingEnd="2dp"
                 android:paddingTop="10dp"
-                android:paddingBottom="10dp"
-                android:orientation="horizontal">
+                android:paddingEnd="2dp"
+                android:paddingBottom="10dp">
 
                 <TextView
                     android:id="@+id/etTopManga"
@@ -128,8 +129,8 @@
                     android:id="@+id/btnTopMangaMore"
                     android:layout_width="40dp"
                     android:layout_height="36dp"
-                    android:layout_weight="1"
                     android:layout_marginTop="2dp"
+                    android:layout_weight="1"
                     android:background="@android:color/transparent"
                     android:scaleType="fitCenter"
                     android:src="@drawable/btn_more" />
@@ -147,15 +148,16 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
                 app:layout_constraintVertical_bias="0.0" />
+
             <LinearLayout
                 android:id="@+id/linearLayout4"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:orientation="horizontal"
                 android:paddingStart="7dp"
-                android:paddingEnd="2dp"
                 android:paddingTop="10dp"
-                android:paddingBottom="10dp"
-                android:orientation="horizontal">
+                android:paddingEnd="2dp"
+                android:paddingBottom="10dp">
 
                 <TextView
                     android:id="@+id/etTopCharacter"
@@ -173,8 +175,8 @@
                     android:id="@+id/btnTopCharacterMore"
                     android:layout_width="40dp"
                     android:layout_height="36dp"
-                    android:layout_weight="1"
                     android:layout_marginTop="2dp"
+                    android:layout_weight="1"
                     android:background="@android:color/transparent"
                     android:scaleType="fitCenter"
                     android:src="@drawable/btn_more" />
