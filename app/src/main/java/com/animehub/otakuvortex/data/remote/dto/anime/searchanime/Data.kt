@@ -1,5 +1,7 @@
 package com.animehub.otakuvortex.data.remote.dto.anime.searchanime
 
+import com.animehub.otakuvortex.domain.modal.anime.searchanime.SearchedAnimeData
+
 data class Data(
     val aired: Aired,
     val airing: Boolean,
@@ -38,3 +40,11 @@ data class Data(
     val url: String,
     val year: Int
 )
+
+fun Data.toSearchedAnimeData(): SearchedAnimeData{
+    return SearchedAnimeData(
+        animeId = mal_id,
+        title = title,
+        imageUrl = images.jpg.large_image_url
+    )
+}

@@ -1,5 +1,7 @@
 package com.animehub.otakuvortex.data.remote.dto.manga.searchmanga
 
+import com.animehub.otakuvortex.domain.modal.mamga.topmanga.searchmanga.SearchedMangaData
+
 data class Data(
     val approved: Boolean,
     val authors: List<Author>,
@@ -32,3 +34,11 @@ data class Data(
     val url: String,
     val volumes: Int
 )
+
+fun Data.toSearchedMangaData(): SearchedMangaData{
+    return SearchedMangaData(
+        animeId = mal_id,
+        imageUrl = images.jpg.large_image_url,
+        title = title
+    )
+}
