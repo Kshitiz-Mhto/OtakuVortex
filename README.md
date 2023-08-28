@@ -6,7 +6,7 @@
 🌟Introducing **OtakuVortex**: Your Ultimate Hub for Anime and Manga Delights.Premier hub for anime and manga lovers🌸. Curated content, user-friendly interface, vibrant community. Dive into limitless anime and manga enjoyment.
 
 <p align="center">
-	<img src="app/src/main/res/drawable/logo_bg_removed.png" alt="logo" width="380" height="auto">
+	<img src="app/src/main/res/drawable/logo_bg_removed.png" alt="logo" width="350" height="auto">
 </p>
 
 ### Architecture
@@ -35,7 +35,17 @@ enabling easier updates,efficient testing, and adaptable changes across layers.
 </td>
 <td>
 <p align="center">
-	<img src="./assets/home_screenshot.png" alt="homescreen" height="auto">
+	<img src="./assets/hot_screenshot.png" alt="homescreen" height="auto">
+</p>
+</td>
+<td>
+<p align="center">
+	<img src="./assets/search_screenshot0.png" alt="homescreen" height="auto">
+</p>
+</td>
+<td>
+<p align="center">
+	<img src="./assets/search_screenshot1.png" alt="homescreen" height="auto">
 </p>
 </td>
 </tr>
