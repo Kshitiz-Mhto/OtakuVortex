@@ -7,7 +7,7 @@
         <item name="android:windowNoTitle">true</item>
     </style>
     <style name="Theme.OtakuVortex.Launcher">
-        <item name="android:windowBackground">"@drawable/logo"</item>
+        <item name="android:windowBackground">@drawable/fash_screen</item>
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowActionBar">false</item>
         <item name="android:windowFullscreen">true</item>

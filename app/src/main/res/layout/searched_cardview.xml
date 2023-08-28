@@ -15,7 +15,7 @@
         android:background="@color/perfectbg"
         android:gravity="center"
         android:orientation="vertical"
-        android:paddingBottom="5dp"
+        android:paddingBottom="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
