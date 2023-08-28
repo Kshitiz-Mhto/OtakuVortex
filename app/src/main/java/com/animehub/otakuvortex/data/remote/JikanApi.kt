@@ -20,9 +20,9 @@ interface JikanApi {
     suspend fun getTopCharacters(@Query("page") page: Int = 1): TopCharacterDto
 
     @GET("/v4/anime")
-    suspend fun getSearchedAime(@Query("q") query: String): SearchedAnimeDto
+    suspend fun getSearchedAnime(@Query("q") query: String, @Query("page") page: Int = 1): SearchedAnimeDto
 
     @GET("/v4/manga")
-    suspend fun getSearchedManga(@Query("q") query: String): SearchedMangaDto
+    suspend fun getSearchedManga(@Query("q") query: String, @Query("page") page: Int = 1): SearchedMangaDto
 
 }
