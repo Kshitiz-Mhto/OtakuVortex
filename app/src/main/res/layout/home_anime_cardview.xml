@@ -22,10 +22,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.188">
 
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent">
-
             <ImageButton
                 android:id="@+id/tvAnimeImage"
                 android:layout_width="210dp"
@@ -34,7 +30,18 @@
                 android:background="@color/perfectbg"
                 android:scaleType="centerCrop"
                 app:srcCompat="@drawable/ic_launcher_background" />
-        </RelativeLayout>
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/btnSaveToFavorite"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_favorite"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="5dp"
+                android:layout_gravity="end"
+                app:backgroundTint="#C4E4E2E1"
+                app:rippleColor="#F33C5C"
+                android:clickable="true"/>
     </androidx.cardview.widget.CardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -22,7 +22,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/animeCard"
+            android:id="@+id/searchCard"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:cardCornerRadius="16dp">
@@ -35,13 +35,25 @@
                 android:background="@color/perfectbg"
                 android:scaleType="centerCrop"
                 app:srcCompat="@drawable/ic_launcher_background" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/btnSaveToFavorite"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_favorite"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="5dp"
+                android:layout_gravity="end"
+                app:backgroundTint="#C4E4E2E1"
+                app:rippleColor="#F33C5C"
+                android:clickable="true"/>
         </androidx.cardview.widget.CardView>
 
         <TextView
             android:id="@+id/etSearchedName"
             android:layout_width="185dp"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/animeCard"
+            android:layout_below="@+id/searchCard"
             android:fontFamily="@font/poppins_light"
             android:paddingTop="8dp"
             android:textColor="@color/white"

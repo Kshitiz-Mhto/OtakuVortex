@@ -11,7 +11,6 @@ import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.animehub.otakuvortex.databinding.FragmentSearchmeBinding
 import com.animehub.otakuvortex.paging.anime.searched.SearchedAnimePagingAdaptor
@@ -19,7 +18,6 @@ import com.animehub.otakuvortex.paging.loaderadapter.LoaderAdaptor
 import com.animehub.otakuvortex.paging.manga.searched.SearchedMangaPagingAdaptor
 import com.animehub.otakuvortex.presentation.ui.search.searchanime.SearchedAnimeViewModel
 import com.animehub.otakuvortex.presentation.ui.search.searchmanga.SearchedMangaViewModel
-import dagger.hilt.EntryPoint
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import java.util.Locale
@@ -60,6 +58,7 @@ class SearchmeFragment : Fragment() {
                 val searchText = query!!.lowercase(Locale.getDefault())
                 if (searchText.isNotEmpty() or searchText.isNotBlank()){
                     viewLifecycleOwner.lifecycleScope.launch {
+                        binding.linearLayoutSearchedAnime.visibility = View.VISIBLE
                         searchedAnimeViewModel.searchedAnimeListValue.collect{ state ->
                             when{
                                 state.isLoading -> {
@@ -81,6 +80,7 @@ class SearchmeFragment : Fragment() {
                         }
                     }
                     viewLifecycleOwner.lifecycleScope.launch {
+                        binding.linearLayoutSearchedManaga.visibility = View.VISIBLE
                         searchedMangaViewModel.searchedMangaListValue.collect{ stateo ->
                             when{
                                 stateo.isLoading -> {
@@ -121,6 +121,12 @@ class SearchmeFragment : Fragment() {
         )
 
         return binding.root
+    }
+
+    override fun onPause() {
+        super.onPause()
+        binding.linearLayoutSearchedManaga.visibility = View.GONE
+        binding.linearLayoutSearchedAnime.visibility = View.GONE
     }
 
 }
