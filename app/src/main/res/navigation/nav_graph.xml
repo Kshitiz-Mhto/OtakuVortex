@@ -11,8 +11,8 @@
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" >
         <action
-            android:id="@+id/action_homeFragment_to_searchmeFragment"
-            app:destination="@id/searchmeFragment"
+            android:id="@+id/action_homeFragment_to_infoFragment"
+            app:destination="@id/infoFragment"
             app:enterAnim="@anim/push_down_in"
             app:popEnterAnim="@anim/push_down_in" />
     </fragment>
@@ -22,9 +22,14 @@
         android:label="fragment_searchme"
         tools:layout="@layout/fragment_searchme" >
         <action
-            android:id="@+id/action_searchmeFragment_to_homeFragment"
-            app:destination="@id/homeFragment"
+            android:id="@+id/action_searchmeFragment_to_infoFragment"
+            app:destination="@id/infoFragment"
             app:enterAnim="@anim/push_down_in"
             app:popEnterAnim="@anim/push_down_in" />
     </fragment>
+    <fragment
+        android:id="@+id/infoFragment"
+        android:name="com.animehub.otakuvortex.presentation.ui.info.InfoFragment"
+        android:label="fragment_info"
+        tools:layout="@layout/fragment_info" />
 </navigation>

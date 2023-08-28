@@ -5,6 +5,7 @@
     android:id="@+id/initialActivity"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:foreground="@drawable/landing_bg"
     tools:context=".presentation.ui.MainActivity">
 
     <fragment
