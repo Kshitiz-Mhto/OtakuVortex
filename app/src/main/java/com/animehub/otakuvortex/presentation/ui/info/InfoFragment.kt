@@ -11,7 +11,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.RecyclerView
 import com.animehub.otakuvortex.databinding.FragmentInfoBinding
+import com.animehub.otakuvortex.presentation.adapters.AnimeGenreRecyclerViewAdapter
 import com.animehub.otakuvortex.presentation.ui.info.anime.AnimeByIdViewModel
 import com.animehub.otakuvortex.presentation.ui.info.character.CharacterByIdViewModel
 import com.animehub.otakuvortex.presentation.ui.info.manga.MangaByIdViewModel
@@ -32,6 +34,9 @@ class InfoFragment : Fragment() {
     private lateinit var mangaId: String
     private lateinit var characterId: String
 
+    private lateinit var animeGenreRecyclerView: RecyclerView
+    private lateinit var genreAdapter: AnimeGenreRecyclerViewAdapter
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -47,6 +52,9 @@ class InfoFragment : Fragment() {
         animeId = sp.getString("animeId", "0") ?: "0"
         mangaId = sp.getString("mangaId", "1") ?: "1"
         characterId = sp.getString("characterId", "2") ?: "2"
+
+        animeGenreRecyclerView = binding.infoGenreRecylerview
+        genreAdapter = AnimeGenreRecyclerViewAdapter()
 
         if (animeId != "0") {
             showAnimeDetails()
@@ -80,6 +88,17 @@ class InfoFragment : Fragment() {
                             Glide.with(requireContext())
                                 .load(animeDetail.imageUrl)
                                 .into(binding.tvInfoImgage)
+                            binding.ratingValue.text = "⭐ "+ animeDetail.score.toString()
+                            binding.ratingNum.text = " ❤️ "+ animeDetail.scoredBy.toString()
+                            binding.ratingPopularity.text = "\uD83D\uDD25 "+ animeDetail.popularity.toString()
+                            binding.infoTitle.text = animeDetail.title
+                            binding.ratedAs.text = "Rated :" +animeDetail.rating
+                            binding.infoDescription.text = animeDetail.description
+                            binding.statusAnime.text = animeDetail.status
+                            binding.numOfEp.text = "\uD83C\uDFA6 " +animeDetail.numOfEpisode.toString() + " episodes"
+                            binding.durationAnime.text = "⏳ " +animeDetail.duration
+                            genreAdapter.submitList(animeDetail.genres)
+                            animeGenreRecyclerView.adapter = genreAdapter
                         }
                     }
                 }
