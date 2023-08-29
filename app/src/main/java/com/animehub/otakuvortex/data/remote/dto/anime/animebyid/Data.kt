@@ -49,7 +49,6 @@ fun Data.toAnimeByIdData(): AnimeByIdData{
     return AnimeByIdData(
         animeId = mal_id,
         imageUrl = images.jpg.large_image_url,
-        trailerUrl = trailer.embed_url,
         title = title,
         numOfEpisode = episodes,
         status = status,

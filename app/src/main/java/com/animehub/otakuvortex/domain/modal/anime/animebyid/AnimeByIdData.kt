@@ -8,7 +8,6 @@ import com.animehub.otakuvortex.data.remote.dto.anime.animebyid.Licensor
 data class AnimeByIdData(
     val animeId: Int,
     val imageUrl: String,
-    val trailerUrl: String,
     val title: String,
     val numOfEpisode: Int,
     val status: String,
