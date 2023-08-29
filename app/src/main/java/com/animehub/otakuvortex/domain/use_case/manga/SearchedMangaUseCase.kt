@@ -20,7 +20,7 @@ class SearchedMangaUseCase @Inject constructor(
     operator fun invoke(query: String): Flow<ResponseState<PagingData<SearchedMangaData>>> = flow{
         try {
             emit(ResponseState.Loading())
-            repo.getSearchedManga(query).cachedIn(CoroutineScope(coroutineContext)).collect(){
+            repo.getSearchedManga(query).cachedIn(CoroutineScope(coroutineContext)).collect{
                 emit(ResponseState.Success(it))
             }
         }catch (e: HttpException){
