@@ -11,13 +11,13 @@
 
 ### Architecture
 
-```
-
 Android Clean Architecture integrates MVVM design pattern, structuring apps into UI, ViewModel, UseCase, and data layers.
 This separation boosts maintainability, testability, and scalability by enforcing modularization and dependency inversion,
 enabling easier updates,efficient testing, and adaptable changes across layers.
 
-```
+<br>
+
+### Screenshots
 
 <p align="center">
 	<img src="./assets/clean_architecture.png" alt="architecture" height="auto">
@@ -40,16 +40,23 @@ enabling easier updates,efficient testing, and adaptable changes across layers.
 </td>
 <td>
 <p align="center">
-	<img src="./assets/search_screenshot0.png" alt="homescreen" height="auto">
+	<img src="./assets/info_screenshot.png" alt="infoscreen" height="auto">
 </p>
 </td>
 <td>
 <p align="center">
-	<img src="./assets/search_screenshot1.png" alt="homescreen" height="auto">
+	<img src="./assets/search_screenshot0.png" alt="search screen" height="auto">
+</p>
+</td>
+<td>
+<p align="center">
+	<img src="./assets/search_screenshot1.png" alt="search screen" height="auto">
 </p>
 </td>
 </tr>
 </table>
+
+<br>
 
 ### Library Used
 
