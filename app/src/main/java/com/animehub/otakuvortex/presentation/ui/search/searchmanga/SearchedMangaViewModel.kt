@@ -16,16 +16,12 @@ class SearchedMangaViewModel @Inject constructor(
     private val useCase: SearchedMangaUseCase
 ): ViewModel() {
 
-    init {
-        getSearchedMangaList()
-    }
-
     private val _searchedMangaListValue = MutableStateFlow(SearchedMangaListState())
     var searchedMangaListValue: StateFlow<SearchedMangaListState> = _searchedMangaListValue
 
-    fun getSearchedMangaList() {
+    fun getSearchedMangaList(query: String) {
         viewModelScope.launch(Dispatchers.IO) {
-            useCase("one piece").collect{ responseState ->
+            useCase(query).collect{ responseState ->
                 when (responseState) {
                     is ResponseState.Success -> {
                         val searchedMangaPagingData = SearchedMangaListState(searchedMangaList = responseState.data)

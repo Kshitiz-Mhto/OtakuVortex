@@ -59,6 +59,7 @@ class SearchmeFragment : Fragment() {
                 if (searchText.isNotEmpty() or searchText.isNotBlank()){
                     viewLifecycleOwner.lifecycleScope.launch {
                         binding.linearLayoutSearchedAnime.visibility = View.VISIBLE
+                        searchedAnimeViewModel.getSearchedAnimeList(searchText)
                         searchedAnimeViewModel.searchedAnimeListValue.collect{ state ->
                             when{
                                 state.isLoading -> {
@@ -81,6 +82,7 @@ class SearchmeFragment : Fragment() {
                     }
                     viewLifecycleOwner.lifecycleScope.launch {
                         binding.linearLayoutSearchedManaga.visibility = View.VISIBLE
+                        searchedMangaViewModel.getSearchedMangaList(searchText)
                         searchedMangaViewModel.searchedMangaListValue.collect{ stateo ->
                             when{
                                 stateo.isLoading -> {

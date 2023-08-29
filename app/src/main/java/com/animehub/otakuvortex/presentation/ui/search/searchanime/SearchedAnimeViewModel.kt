@@ -1,6 +1,5 @@
 package com.animehub.otakuvortex.presentation.ui.search.searchanime
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.animehub.otakuvortex.domain.use_case.anime.SearchedAnimeUseCase
@@ -17,16 +16,12 @@ class SearchedAnimeViewModel @Inject constructor(
     private val useCase: SearchedAnimeUseCase
 ): ViewModel() {
 
-    init {
-        getSearchedAnimeList()
-    }
-
     private val _searchedAnimeListValue = MutableStateFlow(SearchedAnimeListState())
     var searchedAnimeListValue: StateFlow<SearchedAnimeListState> = _searchedAnimeListValue
 
-    fun getSearchedAnimeList() {
+    fun getSearchedAnimeList(query: String) {
         viewModelScope.launch(Dispatchers.IO) {
-            useCase("one piece").collect{ responseState ->
+            useCase(query).collect{ responseState ->
                 when (responseState) {
                     is ResponseState.Success -> {
                         val searchedAnimePagingData = SearchedAnimeListState(searchedAnimeList = responseState.data)
