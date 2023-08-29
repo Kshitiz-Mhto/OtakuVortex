@@ -1,14 +1,20 @@
-package com.animehub.otakuvortex.presentation.di
+package com.animehub.otakuvortex.di
 
 import com.animehub.otakuvortex.data.remote.JikanApi
+import com.animehub.otakuvortex.data.repository.CharacterByIdRepositoryImpl
 import com.animehub.otakuvortex.data.repository.TopCharacterRepositoryImpl
+import com.animehub.otakuvortex.data.repository.anime.AnimeByIdRepositoryImpl
 import com.animehub.otakuvortex.data.repository.anime.AnimeRepositoryImpl
 import com.animehub.otakuvortex.data.repository.anime.SearchedAnimeRepositoryImpl
+import com.animehub.otakuvortex.data.repository.manga.MangaByIdRepositoryImpl
 import com.animehub.otakuvortex.data.repository.manga.MangaRepositoryImpl
 import com.animehub.otakuvortex.data.repository.manga.SearchedMangaRepositoryImpl
+import com.animehub.otakuvortex.domain.repository.CharacterByIdRepository
 import com.animehub.otakuvortex.domain.repository.TopCharacterRepository
+import com.animehub.otakuvortex.domain.repository.anime.AnimeByIdRepository
 import com.animehub.otakuvortex.domain.repository.anime.AnimeRepository
 import com.animehub.otakuvortex.domain.repository.anime.SearchedAnimeRepository
+import com.animehub.otakuvortex.domain.repository.manga.MangaByIdRepository
 import com.animehub.otakuvortex.domain.repository.manga.MangaRepository
 import com.animehub.otakuvortex.domain.repository.manga.SearchedMangaRepository
 import com.animehub.otakuvortex.util.Constants.BASE_URL
@@ -77,4 +83,21 @@ object AppModule {
         return SearchedMangaRepositoryImpl(jikanApi = jikenApi)
     }
 
+    @Provides
+    @Singleton
+    fun provideAnimeById(jikenApi: JikanApi): AnimeByIdRepository{
+        return AnimeByIdRepositoryImpl(jikanApi = jikenApi)
+    }
+
+    @Provides
+    @Singleton
+    fun provideMangaById(jikenApi: JikanApi): MangaByIdRepository{
+        return MangaByIdRepositoryImpl(jikanApi = jikenApi)
+    }
+
+    @Provides
+    @Singleton
+    fun provideCharacterById(jikenApi: JikanApi): CharacterByIdRepository{
+        return CharacterByIdRepositoryImpl(jikanApi = jikenApi)
+    }
 }
