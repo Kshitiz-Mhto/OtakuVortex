@@ -4,6 +4,7 @@ import com.animehub.otakuvortex.data.remote.dto.anime.animebyid.AnimeByIdDto
 import com.animehub.otakuvortex.data.remote.dto.anime.recommendation.AnimeRecommendationDto
 import com.animehub.otakuvortex.data.remote.dto.anime.searchanime.SearchedAnimeDto
 import com.animehub.otakuvortex.data.remote.dto.anime.topanime.TopAnimeDto
+import com.animehub.otakuvortex.data.remote.dto.characterbyid.CharacterByIdDto
 import com.animehub.otakuvortex.data.remote.dto.manga.mangabyid.MangaByIdDto
 import com.animehub.otakuvortex.data.remote.dto.manga.recommendation.MangaRecommendationDto
 import com.animehub.otakuvortex.data.remote.dto.manga.searchmanga.SearchedMangaDto
@@ -35,6 +36,9 @@ interface JikanApi {
 
     @GET("/v4/manga/{id}/full")
     suspend fun getMangaById(@Path("id") mangaId: Int): MangaByIdDto
+
+    @GET("/v4/characters/{id}/full")
+    suspend fun getCharacterById(@Path("id") characterId: Int): CharacterByIdDto
 
     @GET("/v4/recommendation/anime")
     suspend fun getAnimeRecommendation(): AnimeRecommendationDto
