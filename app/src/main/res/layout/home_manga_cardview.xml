@@ -11,7 +11,7 @@
     android:background="@android:color/transparent">
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/animeCard"
+        android:id="@+id/mangaCard"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:cardCornerRadius="16dp"
@@ -22,27 +22,27 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.188">
 
-            <ImageButton
-                android:id="@+id/tvAnimeImage"
-                android:layout_width="210dp"
-                android:layout_height="300dp"
-                android:layout_centerInParent="true"
-                android:background="@color/perfectbg"
-                android:scaleType="centerCrop"
-                android:clickable="true"
-                app:srcCompat="@drawable/ic_launcher_background" />
+        <ImageButton
+            android:id="@+id/tvMangaImage"
+            android:layout_width="210dp"
+            android:layout_height="300dp"
+            android:layout_centerInParent="true"
+            android:background="@color/perfectbg"
+            android:scaleType="centerCrop"
+            android:clickable="true"
+            app:srcCompat="@drawable/ic_launcher_background" />
 
-            <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/btnSaveToFavoriteAnime"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_favorite"
-                android:layout_marginTop="5dp"
-                android:layout_marginEnd="5dp"
-                android:layout_gravity="end"
-                app:backgroundTint="#C4E4E2E1"
-                app:rippleColor="#F33C5C"
-                android:clickable="true"/>
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/btnSaveToFavoriteManga"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_favorite"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_gravity="end"
+            app:backgroundTint="#C4E4E2E1"
+            app:rippleColor="#F33C5C"
+            android:clickable="true"/>
     </androidx.cardview.widget.CardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
