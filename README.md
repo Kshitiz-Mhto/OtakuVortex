@@ -17,8 +17,6 @@ enabling easier updates,efficient testing, and adaptable changes across layers.
 
 <br>
 
-### Screenshots
-
 <p align="center">
 	<img src="./assets/clean_architecture.png" alt="architecture" height="auto">
 </p>
