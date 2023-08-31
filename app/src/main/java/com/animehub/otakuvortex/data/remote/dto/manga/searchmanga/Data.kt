@@ -37,7 +37,7 @@ data class Data(
 
 fun Data.toSearchedMangaData(): SearchedMangaData {
     return SearchedMangaData(
-        animeId = mal_id,
+        mangaId = mal_id,
         imageUrl = images.jpg.large_image_url,
         title = title
     )
