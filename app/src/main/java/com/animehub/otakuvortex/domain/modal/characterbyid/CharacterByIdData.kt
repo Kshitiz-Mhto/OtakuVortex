@@ -10,6 +10,6 @@ data class CharacterByIdData(
     val titleKanji: String,
     val favorites: Int,
     val about: String,
-//    val featuredAnime: List<Anime>,
-//    val featuredManga: List<Manga>
+    val featuredAnime: List<Anime>,
+    val featuredManga: List<Manga>
 )

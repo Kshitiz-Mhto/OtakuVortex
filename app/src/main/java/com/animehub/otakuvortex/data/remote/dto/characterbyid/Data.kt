@@ -24,5 +24,7 @@ fun Data.toCharacterByIdData(): CharacterByIdData {
         titleKanji = name_kanji,
         favorites = favorites,
         about = about,
+        featuredAnime = anime,
+        featuredManga = manga
     )
 }
