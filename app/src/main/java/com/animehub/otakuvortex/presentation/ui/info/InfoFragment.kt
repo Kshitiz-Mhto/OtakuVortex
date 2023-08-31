@@ -13,7 +13,8 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.RecyclerView
 import com.animehub.otakuvortex.databinding.FragmentInfoBinding
-import com.animehub.otakuvortex.presentation.adapters.AnimeGenreRecyclerViewAdapter
+import com.animehub.otakuvortex.presentation.adapters.anime.AnimeGenreRecyclerViewAdapter
+import com.animehub.otakuvortex.presentation.adapters.manga.MangaGenreRecyclerViewAdapter
 import com.animehub.otakuvortex.presentation.ui.info.anime.AnimeByIdViewModel
 import com.animehub.otakuvortex.presentation.ui.info.character.CharacterByIdViewModel
 import com.animehub.otakuvortex.presentation.ui.info.manga.MangaByIdViewModel
@@ -34,8 +35,9 @@ class InfoFragment : Fragment() {
     private lateinit var mangaId: String
     private lateinit var characterId: String
 
-    private lateinit var animeGenreRecyclerView: RecyclerView
-    private lateinit var genreAdapter: AnimeGenreRecyclerViewAdapter
+    private lateinit var genreRecyclerView: RecyclerView
+    private lateinit var genreAnimeAdapter: AnimeGenreRecyclerViewAdapter
+    private lateinit var genreMangaAdapter: MangaGenreRecyclerViewAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,8 +55,9 @@ class InfoFragment : Fragment() {
         mangaId = sp.getString("mangaId", "1") ?: "1"
         characterId = sp.getString("characterId", "2") ?: "2"
 
-        animeGenreRecyclerView = binding.infoGenreRecylerview
-        genreAdapter = AnimeGenreRecyclerViewAdapter()
+        genreRecyclerView = binding.infoGenreRecylerview
+        genreAnimeAdapter = AnimeGenreRecyclerViewAdapter()
+        genreMangaAdapter = MangaGenreRecyclerViewAdapter()
 
         if (animeId != "0") {
             showAnimeDetails()
@@ -94,11 +97,11 @@ class InfoFragment : Fragment() {
                             binding.infoTitle.text = animeDetail.title
                             binding.ratedAs.text = "Rated :" +animeDetail.rating
                             binding.infoDescription.text = animeDetail.description
-                            binding.statusAnime.text = animeDetail.status
+                            binding.statusAnime.text = "Status: "+animeDetail.status
                             binding.numOfEp.text = "\uD83C\uDFA6 " +animeDetail.numOfEpisode.toString() + " episodes"
                             binding.durationAnime.text = "⏳ " +animeDetail.duration
-                            genreAdapter.submitList(animeDetail.genres)
-                            animeGenreRecyclerView.adapter = genreAdapter
+                            genreAnimeAdapter.submitList(animeDetail.genres)
+                            genreRecyclerView.adapter = genreAnimeAdapter
                         }
                     }
                 }
@@ -119,6 +122,18 @@ class InfoFragment : Fragment() {
                             Glide.with(requireContext())
                                 .load(mangaDetail.imageUrl)
                                 .into(binding.tvInfoImgage)
+                            binding.infoBackground.visibility = View.VISIBLE
+                            binding.etBackground.visibility = View.VISIBLE
+                            binding.infoTitle.text = mangaDetail.title
+                            binding.ratingValue.text = "⭐ "+ mangaDetail.score.toString()
+                            binding.ratingNum.text = " ❤️ "+ mangaDetail.scoredBy.toString()
+                            binding.statusAnime.text = "Status: " +mangaDetail.status
+                            binding.numOfEp.text = "\uD83C\uDFA6 " + mangaDetail.numOfChapters.toString() + " chapters"
+                            binding.ratingPopularity.text = "\uD83D\uDD25 "+ mangaDetail.popularity.toString()
+                            binding.infoDescription.text = mangaDetail.description
+                            binding.infoBackground.text = mangaDetail.background
+                            genreMangaAdapter.submitList(mangaDetail.genres)
+                            genreRecyclerView.adapter = genreMangaAdapter
                         }
                     }
                 }

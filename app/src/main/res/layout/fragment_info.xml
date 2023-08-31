@@ -8,7 +8,6 @@
     android:background="@color/perfectbg"
     tools:context=".presentation.ui.info.InfoFragment">
 
-
     <ScrollView
         android:id="@+id/scrollView2"
         android:layout_width="match_parent"
@@ -159,7 +158,6 @@
                         android:fontFamily="@font/montserrat"
                         android:gravity="start"
                         android:textColor="@color/white"
-                        android:text="⏳ 4"
                         android:textSize="17sp"
                         android:textStyle="bold" />
                 </LinearLayout>
@@ -170,7 +168,7 @@
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="5dp"
                     android:fontFamily="@font/montserrat_semibold"
-                    android:text="Background"
+                    android:text="Synopsis"
                     android:textColor="@color/white"
                     android:textSize="25sp" />
 
@@ -186,13 +184,28 @@
                     android:textSize="18sp" />
 
                 <TextView
-                    android:id="@+id/etInfoCredits"
+                    android:id="@+id/etBackground"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:fontFamily="@font/poppins_medium"
-                    android:text="Casts"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="5dp"
+                    android:fontFamily="@font/montserrat_semibold"
+                    android:text="Background"
                     android:textColor="@color/white"
-                    android:textSize="30sp" />
+                    android:visibility="gone"
+                    android:textSize="25sp" />
+
+                <TextView
+                    android:id="@+id/infoBackground"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="12dp"
+                    android:layout_marginBottom="10dp"
+                    android:textColor="#94FFFFFF"
+                    android:fontFamily="@font/montserrat"
+                    android:gravity="start"
+                    android:visibility="gone"
+                    android:textSize="18sp" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/castRecyclerView"
