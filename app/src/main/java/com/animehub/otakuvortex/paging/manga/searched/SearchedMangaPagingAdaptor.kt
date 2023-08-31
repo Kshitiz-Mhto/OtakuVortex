@@ -1,10 +1,13 @@
 package com.animehub.otakuvortex.paging.manga.searched
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.navigation.findNavController
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
@@ -13,6 +16,8 @@ import com.animehub.otakuvortex.domain.modal.mamga.searchmanga.SearchedMangaData
 import com.bumptech.glide.Glide
 
 class SearchedMangaPagingAdaptor: PagingDataAdapter<SearchedMangaData, SearchedMangaPagingAdaptor.SearchedMangaViewHolder>(COPARATOR) {
+
+    private lateinit var sp: SharedPreferences
 
     inner class SearchedMangaViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
         val searchedImage = itemView.findViewById<ImageView>(R.id.tvSearchedImage)
@@ -25,7 +30,7 @@ class SearchedMangaPagingAdaptor: PagingDataAdapter<SearchedMangaData, SearchedM
                 oldItem: SearchedMangaData,
                 newItem: SearchedMangaData
             ): Boolean {
-                return oldItem.animeId == newItem.animeId
+                return oldItem.mangaId== newItem.mangaId
             }
 
             override fun areContentsTheSame(
@@ -44,10 +49,19 @@ class SearchedMangaPagingAdaptor: PagingDataAdapter<SearchedMangaData, SearchedM
             .load(indexElement!!.imageUrl)
             .into(holder.searchedImage)
         holder.searchedTitle.text = indexElement.title
+        holder.searchedImage.setOnClickListener{
+            val editor = sp.edit()
+            editor.putString("mangaId", indexElement.mangaId.toString())
+            editor.apply()
+            it.findNavController().navigate(
+                R.id.action_searchmeFragment_to_infoFragment
+            )
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SearchedMangaViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.searched_cardview, parent, false)
+        sp = parent.context.getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
         return SearchedMangaViewHolder(view)
     }
 }

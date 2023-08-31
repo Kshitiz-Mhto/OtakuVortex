@@ -34,6 +34,7 @@
                 android:layout_centerInParent="true"
                 android:background="@color/perfectbg"
                 android:scaleType="centerCrop"
+                android:clickable="true"
                 app:srcCompat="@drawable/ic_launcher_background" />
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
