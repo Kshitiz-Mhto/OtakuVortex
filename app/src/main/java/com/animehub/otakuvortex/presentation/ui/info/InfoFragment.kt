@@ -16,7 +16,6 @@ import com.animehub.otakuvortex.databinding.FragmentInfoBinding
 import com.animehub.otakuvortex.presentation.adapters.anime.AnimeGenreRecyclerViewAdapter
 import com.animehub.otakuvortex.presentation.adapters.manga.MangaGenreRecyclerViewAdapter
 import com.animehub.otakuvortex.presentation.ui.info.anime.AnimeByIdViewModel
-import com.animehub.otakuvortex.presentation.ui.info.character.CharacterByIdViewModel
 import com.animehub.otakuvortex.presentation.ui.info.manga.MangaByIdViewModel
 import com.bumptech.glide.Glide
 import dagger.hilt.android.AndroidEntryPoint
@@ -28,12 +27,10 @@ class InfoFragment : Fragment() {
     private lateinit var binding: FragmentInfoBinding
     private val animeByIdViewModel: AnimeByIdViewModel by viewModels()
     private val mangaByIdViewModel: MangaByIdViewModel by viewModels()
-    private val characterByIdViewModel: CharacterByIdViewModel by viewModels()
 
     private lateinit var sp: SharedPreferences
     private lateinit var animeId: String
     private lateinit var mangaId: String
-    private lateinit var characterId: String
 
     private lateinit var genreRecyclerView: RecyclerView
     private lateinit var genreAnimeAdapter: AnimeGenreRecyclerViewAdapter
@@ -53,7 +50,6 @@ class InfoFragment : Fragment() {
         sp = requireActivity().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
         animeId = sp.getString("animeId", "0") ?: "0"
         mangaId = sp.getString("mangaId", "1") ?: "1"
-        characterId = sp.getString("characterId", "2") ?: "2"
 
         genreRecyclerView = binding.infoGenreRecylerview
         genreAnimeAdapter = AnimeGenreRecyclerViewAdapter()
@@ -68,11 +64,6 @@ class InfoFragment : Fragment() {
             showMangaDetails()
             mangaId = "1"
             sp.edit().putString("mangaId", "1").apply()
-        }
-        if(characterId != "2"){
-            showCharacterDetails()
-            characterId = "2"
-            sp.edit().putString("characterId", "2").apply()
         }
 
         return binding.root
@@ -134,26 +125,6 @@ class InfoFragment : Fragment() {
                             binding.infoBackground.text = mangaDetail.background
                             genreMangaAdapter.submitList(mangaDetail.genres)
                             genreRecyclerView.adapter = genreMangaAdapter
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-    private fun showCharacterDetails(){
-        viewLifecycleOwner.lifecycleScope.launch {
-            characterByIdViewModel.getCharacterById(characterId.toInt())
-            characterByIdViewModel.characterByIdListValue.collect{state ->
-                when{
-                    state.isLoading -> Log.i("UI load", "lol")
-                    state.error.isNotEmpty() -> Log.i("UI error", "lol")
-                    else ->{
-                        val characterDetail = state.chracterById
-                        if(characterDetail!=null){
-                            Glide.with(requireContext())
-                                .load(characterDetail.imageUrl)
-                                .into(binding.tvInfoImgage)
                         }
                     }
                 }

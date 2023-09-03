@@ -52,7 +52,7 @@ class TopCharacterPagingAdaptor: PagingDataAdapter<TopCharacterModel, TopCharact
             }
             editor.apply()
             it.findNavController().navigate(
-                R.id.action_homeFragment_to_infoFragment
+                R.id.action_homeFragment_to_characterInfoFragment
             )
         }
     }
