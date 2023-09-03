@@ -43,6 +43,11 @@ enabling easier updates,efficient testing, and adaptable changes across layers.
 </td>
 <td>
 <p align="center">
+	<img src="./assets/character_info_screenshot.png" alt="infoscreen_character" height="auto">
+</p>
+</td>
+<td>
+<p align="center">
 	<img src="./assets/search_screenshot0.png" alt="search screen" height="auto">
 </p>
 </td>
