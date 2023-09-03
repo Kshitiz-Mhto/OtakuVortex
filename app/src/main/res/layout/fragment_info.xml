@@ -65,7 +65,6 @@
                         android:gravity="center"
                         android:paddingStart="4dp"
                         android:textColor="@color/white"
-                        android:text="⭐ 8.8"
                         android:textSize="22sp"
                         android:textStyle="bold" />
 
@@ -77,7 +76,6 @@
                         android:fontFamily="@font/montserrat"
                         android:gravity="center"
                         android:textColor="@color/white"
-                        android:text="🖊️ 8387349"
                         android:textSize="22sp"
                         android:textStyle="bold" />
                     <TextView
@@ -88,7 +86,6 @@
                         android:fontFamily="@font/montserrat"
                         android:gravity="center"
                         android:textColor="@color/white"
-                        android:text="🔥 4"
                         android:textSize="22sp"
                         android:textStyle="bold" />
                 </LinearLayout>
@@ -100,7 +97,6 @@
                     android:layout_marginTop="5dp"
                     android:layout_marginBottom="5dp"
                     android:fontFamily="@font/montserrat_semibold"
-                    android:text="Bleach: Sennen Kessen-hen is the reat Goat"
                     android:textColor="@color/white"
                     android:textSize="25sp" />
 
@@ -120,7 +116,7 @@
                     android:fontFamily="@font/montserrat"
                     android:gravity="start"
                     android:textColor="@color/white"
-                    android:text="Rated :  R-17+ (violence  profanity)"
+                    android:textColorHint="@color/white"
                     android:textSize="16sp"
                     android:textStyle="bold" />
                 <LinearLayout
@@ -136,7 +132,6 @@
                         android:fontFamily="@font/montserrat"
                         android:gravity="start"
                         android:textColor="@color/white"
-                        android:text="Finished Airing"
                         android:textSize="17sp"
                         android:textStyle="bold" />
                     <TextView
@@ -147,7 +142,6 @@
                         android:fontFamily="@font/montserrat"
                         android:gravity="start"
                         android:textColor="@color/white"
-                        android:text="🎦 44"
                         android:textSize="17sp"
                         android:textStyle="bold" />
                     <TextView
@@ -180,6 +174,7 @@
                     android:layout_marginBottom="10dp"
                     android:textColor="#94FFFFFF"
                     android:fontFamily="@font/montserrat"
+                    android:layout_marginStart="1dp"
                     android:gravity="start"
                     android:textSize="18sp" />
 
@@ -204,6 +199,7 @@
                     android:textColor="#94FFFFFF"
                     android:fontFamily="@font/montserrat"
                     android:gravity="start"
+                    android:layout_marginStart="1dp"
                     android:visibility="gone"
                     android:textSize="18sp" />
 

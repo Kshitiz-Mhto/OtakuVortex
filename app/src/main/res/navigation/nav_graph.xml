@@ -15,6 +15,11 @@
             app:destination="@id/infoFragment"
             app:enterAnim="@anim/push_down_in"
             app:popEnterAnim="@anim/push_down_in" />
+        <action
+            android:id="@+id/action_homeFragment_to_characterInfoFragment"
+            app:destination="@id/characterInfoFragment"
+            app:enterAnim="@anim/push_down_in"
+            app:popEnterAnim="@anim/push_down_in" />
     </fragment>
     <fragment
         android:id="@+id/searchmeFragment"
@@ -32,4 +37,9 @@
         android:name="com.animehub.otakuvortex.presentation.ui.info.InfoFragment"
         android:label="fragment_info"
         tools:layout="@layout/fragment_info" />
+    <fragment
+        android:id="@+id/characterInfoFragment"
+        android:name="com.animehub.otakuvortex.CharacterInfoFragment"
+        android:label="fragment_character_info"
+        tools:layout="@layout/fragment_character_info" />
 </navigation>
