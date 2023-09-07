@@ -1,5 +1,6 @@
 package com.animehub.otakuvortex.paging.anime
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.SharedPreferences
 import android.view.LayoutInflater
@@ -12,13 +13,19 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.animehub.otakuvortex.R
 import com.animehub.otakuvortex.domain.modal.anime.topanime.TopAnimeData
+import com.animehub.otakuvortex.presentation.ui.favorite.FavoriteFragmentViewModel
 import com.bumptech.glide.Glide
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 
-class TopAnimePagingAdaptor: PagingDataAdapter<TopAnimeData, TopAnimePagingAdaptor.TopAnimeViewHolder>(COMPARATOR) {
+class TopAnimePagingAdaptor(
+    private val viewModel: FavoriteFragmentViewModel
+): PagingDataAdapter<TopAnimeData, TopAnimePagingAdaptor.TopAnimeViewHolder>(COMPARATOR) {
 
     private lateinit var sp: SharedPreferences
+
     class TopAnimeViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
         val animeImage = itemView.findViewById<ImageView>(R.id.tvAnimeImage)
+        val btnSave = itemView.findViewById<FloatingActionButton>(R.id.btnSaveToFavoriteAnime)
     }
 
     companion object{
@@ -33,6 +40,7 @@ class TopAnimePagingAdaptor: PagingDataAdapter<TopAnimeData, TopAnimePagingAdapt
         }
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: TopAnimeViewHolder, position: Int) {
         val index_element = getItem(position)
         Glide.with(holder.itemView.context)
@@ -48,6 +56,15 @@ class TopAnimePagingAdaptor: PagingDataAdapter<TopAnimeData, TopAnimePagingAdapt
                 R.id.action_homeFragment_to_infoFragment
             )
         }
+        holder.btnSave.let {
+            it.setOnClickListener {
+                sp.edit().apply{
+                    putString("savedAnimeId", index_element.animeId.toString())
+                }.apply()
+                viewModel._savedAnimeIdLiveData.postValue(index_element.animeId)
+            }
+        }
+
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TopAnimeViewHolder {

@@ -12,13 +12,18 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.animehub.otakuvortex.R
 import com.animehub.otakuvortex.domain.modal.topcharacter.TopCharacterModel
+import com.animehub.otakuvortex.presentation.ui.favorite.FavoriteFragmentViewModel
 import com.bumptech.glide.Glide
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 
-class TopCharacterPagingAdaptor: PagingDataAdapter<TopCharacterModel, TopCharacterPagingAdaptor.TopCharacterViewHolder>(COMPARATOR) {
+class TopCharacterPagingAdaptor(
+    private val viewModel: FavoriteFragmentViewModel
+): PagingDataAdapter<TopCharacterModel, TopCharacterPagingAdaptor.TopCharacterViewHolder>(COMPARATOR) {
 
     private lateinit var sp: SharedPreferences
     class TopCharacterViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
         val characterImage: ImageView = itemView.findViewById<ImageView>(R.id.tvCharImage)
+        val btnSave = itemView.findViewById<FloatingActionButton>(R.id.btnSaveToFavoriteChar)
     }
 
     companion object{
@@ -54,6 +59,14 @@ class TopCharacterPagingAdaptor: PagingDataAdapter<TopCharacterModel, TopCharact
             it.findNavController().navigate(
                 R.id.action_homeFragment_to_characterInfoFragment
             )
+        }
+        holder.btnSave.let {
+            it.setOnClickListener {
+                sp.edit().apply{
+                    putString("savedCharId", index_element.charId.toString())
+                }.apply()
+                viewModel._savedCharacterIdLiveData.postValue(index_element.charId)
+            }
         }
     }
 

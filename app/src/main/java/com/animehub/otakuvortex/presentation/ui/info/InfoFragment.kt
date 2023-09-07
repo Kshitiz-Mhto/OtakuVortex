@@ -49,7 +49,7 @@ class InfoFragment : Fragment() {
 
         sp = requireActivity().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
         animeId = sp.getString("animeId", "0") ?: "0"
-        mangaId = sp.getString("mangaId", "1") ?: "1"
+        mangaId = sp.getString("mangaId", "-1") ?: "-1"
 
         genreRecyclerView = binding.infoGenreRecylerview
         genreAnimeAdapter = AnimeGenreRecyclerViewAdapter()
@@ -60,9 +60,9 @@ class InfoFragment : Fragment() {
             animeId = "0"
             sp.edit().putString("animeId", "0").apply()
         }
-        if (mangaId != "1") {
+        if (mangaId != "-1") {
             showMangaDetails()
-            mangaId = "1"
+            mangaId = "-1"
             sp.edit().putString("mangaId", "1").apply()
         }
 

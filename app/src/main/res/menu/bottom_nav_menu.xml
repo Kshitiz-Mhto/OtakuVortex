@@ -11,7 +11,7 @@
     <item android:id="@+id/placeholder"
         android:title=""
         />
-    <item android:id="@+id/abc"
+    <item android:id="@+id/favoriteFragment"
         android:title="Okiniiri"
         android:icon="@drawable/ic_favorite"/>
     <item android:id="@+id/searchmeFragment"

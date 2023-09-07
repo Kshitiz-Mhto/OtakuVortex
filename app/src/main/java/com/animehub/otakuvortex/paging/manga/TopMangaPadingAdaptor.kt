@@ -12,14 +12,19 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.animehub.otakuvortex.R
 import com.animehub.otakuvortex.domain.modal.mamga.topmanga.TopMangaData
+import com.animehub.otakuvortex.presentation.ui.favorite.FavoriteFragmentViewModel
 import com.bumptech.glide.Glide
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 
-class TopMangaPadingAdaptor: PagingDataAdapter<TopMangaData, TopMangaPadingAdaptor.TopMangaViewHolder>(COMPARATOR) {
+class TopMangaPadingAdaptor(
+    private val viewModel: FavoriteFragmentViewModel
+) : PagingDataAdapter<TopMangaData, TopMangaPadingAdaptor.TopMangaViewHolder>(COMPARATOR) {
 
     private lateinit var sp: SharedPreferences
 
     class TopMangaViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
         val mangaImage = itemView.findViewById<ImageView>(R.id.tvMangaImage)
+        val btnSave = itemView.findViewById<FloatingActionButton>(R.id.btnSaveToFavoriteManga)
     }
 
     companion object{
@@ -47,6 +52,14 @@ class TopMangaPadingAdaptor: PagingDataAdapter<TopMangaData, TopMangaPadingAdapt
             it.findNavController().navigate(
                 R.id.action_homeFragment_to_infoFragment
             )
+        }
+        holder.btnSave.let {
+            it.setOnClickListener {
+                sp.edit().apply{
+                    putString("savedMangaId", index_element.mangaId.toString())
+                }.apply()
+                viewModel._savedMangaIdLiveData.postValue(index_element.mangaId)
+            }
         }
     }
 

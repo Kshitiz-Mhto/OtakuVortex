@@ -1,4 +1,4 @@
-package com.animehub.otakuvortex
+package com.animehub.otakuvortex.presentation.ui.info
 
 import android.content.Context
 import android.content.SharedPreferences

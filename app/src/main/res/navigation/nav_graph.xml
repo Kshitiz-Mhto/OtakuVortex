@@ -39,7 +39,12 @@
         tools:layout="@layout/fragment_info" />
     <fragment
         android:id="@+id/characterInfoFragment"
-        android:name="com.animehub.otakuvortex.CharacterInfoFragment"
+        android:name="com.animehub.otakuvortex.presentation.ui.info.CharacterInfoFragment"
         android:label="fragment_character_info"
         tools:layout="@layout/fragment_character_info" />
+    <fragment
+        android:id="@+id/favoriteFragment"
+        android:name="com.animehub.otakuvortex.presentation.ui.favorite.FavoriteFragment"
+        android:label="fragment_favorite"
+        tools:layout="@layout/fragment_favorite" />
 </navigation>

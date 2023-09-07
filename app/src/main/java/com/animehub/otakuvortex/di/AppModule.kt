@@ -1,5 +1,11 @@
 package com.animehub.otakuvortex.di
 
+import android.content.Context
+import androidx.room.Room
+import com.animehub.otakuvortex.data.local.database.OtakuVortexDB
+import com.animehub.otakuvortex.data.local.repository.AnimeContentRepository
+import com.animehub.otakuvortex.data.local.repository.CharacterContentRepository
+import com.animehub.otakuvortex.data.local.repository.MangaContentRepository
 import com.animehub.otakuvortex.data.remote.JikanApi
 import com.animehub.otakuvortex.data.remote.repository.CharacterByIdRepositoryImpl
 import com.animehub.otakuvortex.data.remote.repository.TopCharacterRepositoryImpl
@@ -21,6 +27,7 @@ import com.animehub.otakuvortex.util.Constants.BASE_URL
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -100,4 +107,33 @@ object AppModule {
     fun provideCharacterById(jikenApi: JikanApi): CharacterByIdRepository{
         return CharacterByIdRepositoryImpl(jikanApi = jikenApi)
     }
+
+    @Provides
+    @Singleton
+    fun provideDB(@ApplicationContext context: Context): OtakuVortexDB {
+        return Room.databaseBuilder(
+            context.applicationContext,
+            OtakuVortexDB::class.java,
+            "otakuvortexDB"
+        ).build()
+    }
+
+    @Provides
+    @Singleton
+    fun provideAnimeDao(db: OtakuVortexDB): AnimeContentRepository {
+        return db.animeContentRepository()
+    }
+
+    @Provides
+    @Singleton
+    fun provideMangaDao(db: OtakuVortexDB): MangaContentRepository {
+        return db.mangaContentRepository()
+    }
+
+    @Provides
+    @Singleton
+    fun provideDao(db: OtakuVortexDB): CharacterContentRepository{
+        return db.characterContentRepository()
+    }
+
 }
