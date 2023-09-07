@@ -1,14 +1,14 @@
 package com.animehub.otakuvortex.di
 
 import com.animehub.otakuvortex.data.remote.JikanApi
-import com.animehub.otakuvortex.data.repository.CharacterByIdRepositoryImpl
-import com.animehub.otakuvortex.data.repository.TopCharacterRepositoryImpl
-import com.animehub.otakuvortex.data.repository.anime.AnimeByIdRepositoryImpl
-import com.animehub.otakuvortex.data.repository.anime.AnimeRepositoryImpl
-import com.animehub.otakuvortex.data.repository.anime.SearchedAnimeRepositoryImpl
-import com.animehub.otakuvortex.data.repository.manga.MangaByIdRepositoryImpl
-import com.animehub.otakuvortex.data.repository.manga.MangaRepositoryImpl
-import com.animehub.otakuvortex.data.repository.manga.SearchedMangaRepositoryImpl
+import com.animehub.otakuvortex.data.remote.repository.CharacterByIdRepositoryImpl
+import com.animehub.otakuvortex.data.remote.repository.TopCharacterRepositoryImpl
+import com.animehub.otakuvortex.data.remote.repository.anime.AnimeByIdRepositoryImpl
+import com.animehub.otakuvortex.data.remote.repository.anime.AnimeRepositoryImpl
+import com.animehub.otakuvortex.data.remote.repository.anime.SearchedAnimeRepositoryImpl
+import com.animehub.otakuvortex.data.remote.repository.manga.MangaByIdRepositoryImpl
+import com.animehub.otakuvortex.data.remote.repository.manga.MangaRepositoryImpl
+import com.animehub.otakuvortex.data.remote.repository.manga.SearchedMangaRepositoryImpl
 import com.animehub.otakuvortex.domain.repository.CharacterByIdRepository
 import com.animehub.otakuvortex.domain.repository.TopCharacterRepository
 import com.animehub.otakuvortex.domain.repository.anime.AnimeByIdRepository

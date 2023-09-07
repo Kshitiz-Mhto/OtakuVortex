@@ -1,4 +1,4 @@
-package com.animehub.otakuvortex.data.repository
+package com.animehub.otakuvortex.data.remote.repository
 
 import androidx.paging.Pager
 import androidx.paging.PagingConfig

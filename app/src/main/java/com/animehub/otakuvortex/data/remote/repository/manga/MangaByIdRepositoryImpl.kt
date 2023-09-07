@@ -1,4 +1,4 @@
-package com.animehub.otakuvortex.data.repository.manga
+package com.animehub.otakuvortex.data.remote.repository.manga
 
 import com.animehub.otakuvortex.data.remote.JikanApi
 import com.animehub.otakuvortex.data.remote.dto.manga.mangabyid.toMangaByIdData
