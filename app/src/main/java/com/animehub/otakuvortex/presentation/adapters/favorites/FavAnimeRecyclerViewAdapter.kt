@@ -13,15 +13,20 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.animehub.otakuvortex.R
 import com.animehub.otakuvortex.data.local.model.AnimeContent
+import com.animehub.otakuvortex.presentation.ui.favorite.FavoriteFragmentViewModel
 import com.bumptech.glide.Glide
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 
-class FavAnimeRecyclerViewAdapter: RecyclerView.Adapter<FavAnimeRecyclerViewAdapter.FavAnimeViewHolder>() {
+class FavAnimeRecyclerViewAdapter(
+    private val favViewModel: FavoriteFragmentViewModel
+): RecyclerView.Adapter<FavAnimeRecyclerViewAdapter.FavAnimeViewHolder>() {
 
     private lateinit var sp: SharedPreferences
 
     inner class FavAnimeViewHolder(item: View): RecyclerView.ViewHolder(item){
         val tvImage = item.findViewById<ImageButton>(R.id.tvFavImage)
         val etTitle = item.findViewById<TextView>(R.id.etFavName)
+        val deleteFromFav = item.findViewById<FloatingActionButton>(R.id.btnDeleteFavorite)
     }
 
     private val differCallback = object: DiffUtil.ItemCallback<AnimeContent>(){
@@ -65,6 +70,18 @@ class FavAnimeRecyclerViewAdapter: RecyclerView.Adapter<FavAnimeRecyclerViewAdap
             it.findNavController().navigate(
                 R.id.action_favoriteFragment_to_infoFragment
             )
+        }
+        holder.deleteFromFav.let {
+            it.setOnClickListener{
+                favViewModel.deleteFavoriteAnimeFromDB(
+                    AnimeContent(
+                        id = indexElement.id,
+                        title = indexElement.title,
+                        imageUrl = indexElement.imageUrl
+                    )
+                )
+                notifyItemRemoved(position)
+            }
         }
     }
 }
