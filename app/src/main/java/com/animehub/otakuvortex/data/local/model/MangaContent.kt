@@ -6,5 +6,7 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "mangacontent")
 data class MangaContent(
     @PrimaryKey(autoGenerate = false)
-    val id: Int
+    val id: Int,
+    val title: String,
+    val imageUrl: String
 )
