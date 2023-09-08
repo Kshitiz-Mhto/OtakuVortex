@@ -60,12 +60,13 @@
             android:orientation="vertical">
 
             <LinearLayout
-                android:id="@+id/linearLayout2"
+                android:id="@+id/linearLayoutForTopAnime"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal"
                 android:paddingStart="7dp"
-                android:paddingEnd="2dp">
+                android:paddingEnd="2dp"
+                android:visibility="gone">
 
                 <TextView
                     android:id="@+id/etTopAnime"
@@ -104,14 +105,15 @@
                 app:layout_constraintVertical_bias="0.0" />
 
             <LinearLayout
-                android:id="@+id/linearLayout3"
+                android:id="@+id/linearLayoutForTopManga"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal"
                 android:paddingStart="7dp"
                 android:paddingTop="10dp"
                 android:paddingEnd="2dp"
-                android:paddingBottom="10dp">
+                android:paddingBottom="10dp"
+                android:visibility="gone">
 
                 <TextView
                     android:id="@+id/etTopManga"
@@ -150,14 +152,15 @@
                 app:layout_constraintVertical_bias="0.0" />
 
             <LinearLayout
-                android:id="@+id/linearLayout4"
+                android:id="@+id/linearLayoutForTopCharacters"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal"
                 android:paddingStart="7dp"
                 android:paddingTop="10dp"
                 android:paddingEnd="2dp"
-                android:paddingBottom="10dp">
+                android:paddingBottom="10dp"
+                android:visibility="gone">
 
                 <TextView
                     android:id="@+id/etTopCharacter"

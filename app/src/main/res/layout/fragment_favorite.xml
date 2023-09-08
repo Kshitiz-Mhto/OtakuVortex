@@ -8,75 +8,92 @@
     android:background="@color/perfectbg"
     tools:context=".presentation.ui.favorite.FavoriteFragment">
 
-    <TextView
-        android:id="@+id/etFavorite"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingTop="5dp"
-        android:gravity="center"
-        android:fontFamily="@font/montserrat_semibold"
-        android:text="❤️OKINIIRI❤️"
-        android:textColor="@color/white"
-        android:textSize="25sp" />
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingBottom="80dp">
+            <TextView
+                android:id="@+id/etFavorite"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="5dp"
+                android:layout_marginBottom="10dp"
+                android:gravity="center"
+                android:fontFamily="@font/montserrat_semibold"
+                android:text="❤️OKINIIRI❤️"
+                android:textColor="@color/white"
+                android:textSize="25sp" />
 
-    <TextView
-        android:id="@+id/etFavAnime"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/montserrat_semibold"
-        android:text="❤️ Anime"
-        android:paddingStart="10dp"
-        android:textColor="@color/white"
-        android:textSize="22sp" />
+            <TextView
+                android:id="@+id/etFavAnime"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat_semibold"
+                android:text="❤️ Anime"
+                android:paddingStart="10dp"
+                android:textColor="@color/white"
+                android:textSize="22sp"
+                android:visibility="gone"/>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/favoriteAnimeContentList"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:orientation="horizontal"
-        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-        app:spanCount="2"
-        />
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/favoriteAnimeContentList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="7dp"
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                app:spanCount="2"
+                />
 
-    <TextView
-        android:id="@+id/etFavManga"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/montserrat_semibold"
-        android:text="❤️ Manga"
-        android:paddingStart="10dp"
-        android:textColor="@color/white"
-        android:textSize="22sp" />
+            <TextView
+                android:id="@+id/etFavManga"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat_semibold"
+                android:text="❤️ Manga"
+                android:paddingStart="10dp"
+                android:textColor="@color/white"
+                android:textSize="22sp"
+                android:visibility="gone"/>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/favoriteMangaContentList"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:orientation="horizontal"
-        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-        app:spanCount="2"
-        />
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/favoriteMangaContentList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="7dp"
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                app:spanCount="2"
+                />
 
-    <TextView
-        android:id="@+id/etFavCharacter"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/montserrat_semibold"
-        android:text="❤️ Character"
-        android:paddingStart="10dp"
-        android:textColor="@color/white"
-        android:textSize="22sp" />
+            <TextView
+                android:id="@+id/etFavCharacter"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat_semibold"
+                android:text="❤️ Character"
+                android:paddingStart="10dp"
+                android:textColor="@color/white"
+                android:textSize="22sp"
+                android:visibility="gone"/>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/favoriteCharacterContentList"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:orientation="horizontal"
-        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-        app:spanCount="2"
-        />
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/favoriteCharacterContentList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="7dp"
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                app:spanCount="2"
+                />
+        </LinearLayout>
+    </ScrollView>
 
 </androidx.appcompat.widget.LinearLayoutCompat>
