@@ -58,9 +58,6 @@ class TopAnimePagingAdaptor(
         }
         holder.btnSave.let {
             it.setOnClickListener {
-                sp.edit().apply{
-                    putString("savedAnimeId", index_element.animeId.toString())
-                }.apply()
                 viewModel._savedAnimeIdLiveData.postValue(index_element.animeId)
             }
         }

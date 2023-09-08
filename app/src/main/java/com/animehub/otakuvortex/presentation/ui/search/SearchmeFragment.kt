@@ -12,10 +12,13 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.animehub.otakuvortex.data.local.model.AnimeContent
+import com.animehub.otakuvortex.data.local.model.MangaContent
 import com.animehub.otakuvortex.databinding.FragmentSearchmeBinding
 import com.animehub.otakuvortex.paging.anime.searched.SearchedAnimePagingAdaptor
 import com.animehub.otakuvortex.paging.loaderadapter.LoaderAdaptor
 import com.animehub.otakuvortex.paging.manga.searched.SearchedMangaPagingAdaptor
+import com.animehub.otakuvortex.presentation.ui.favorite.FavoriteFragmentViewModel
 import com.animehub.otakuvortex.presentation.ui.search.searchanime.SearchedAnimeViewModel
 import com.animehub.otakuvortex.presentation.ui.search.searchmanga.SearchedMangaViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -31,6 +34,7 @@ class SearchmeFragment : Fragment() {
     private lateinit var searchedMangaRecyclerView: RecyclerView
     private val searchedAnimeViewModel: SearchedAnimeViewModel by viewModels()
     private val searchedMangaViewModel: SearchedMangaViewModel by viewModels()
+    private val favoriteViewModel: FavoriteFragmentViewModel by viewModels()
     private lateinit var searchedAnimePagingAdaptor: SearchedAnimePagingAdaptor
     private lateinit var searchedMangaPagingAdaptor: SearchedMangaPagingAdaptor
 
@@ -50,8 +54,8 @@ class SearchmeFragment : Fragment() {
         searchedAnimeRecyclerview.setBackgroundColor(Color.TRANSPARENT)
         searchedMangaRecyclerView.layoutManager = GridLayoutManager(requireContext(),2, GridLayoutManager.HORIZONTAL, false)
         searchedAnimeRecyclerview.layoutManager = GridLayoutManager(requireContext(),2, GridLayoutManager.HORIZONTAL, false)
-        searchedAnimePagingAdaptor = SearchedAnimePagingAdaptor()
-        searchedMangaPagingAdaptor = SearchedMangaPagingAdaptor()
+        searchedAnimePagingAdaptor = SearchedAnimePagingAdaptor(favoriteViewModel)
+        searchedMangaPagingAdaptor = SearchedMangaPagingAdaptor(favoriteViewModel)
 
         binding.searchResult.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
@@ -121,6 +125,18 @@ class SearchmeFragment : Fragment() {
             header = LoaderAdaptor(),
             footer = LoaderAdaptor()
         )
+
+        favoriteViewModel.savedAnimeIdLiveData.observe(viewLifecycleOwner) {
+            viewLifecycleOwner.lifecycleScope.launch {
+                favoriteViewModel.insertFavoriteAnimeToDB(AnimeContent(it))
+            }
+        }
+
+        favoriteViewModel.savedMangaIdLiveData.observe(viewLifecycleOwner){
+            viewLifecycleOwner.lifecycleScope.launch {
+                favoriteViewModel.insertFavoriteMangaToDB(MangaContent(it))
+            }
+        }
 
         return binding.root
     }

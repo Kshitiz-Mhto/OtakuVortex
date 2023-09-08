@@ -55,9 +55,6 @@ class TopMangaPadingAdaptor(
         }
         holder.btnSave.let {
             it.setOnClickListener {
-                sp.edit().apply{
-                    putString("savedMangaId", index_element.mangaId.toString())
-                }.apply()
                 viewModel._savedMangaIdLiveData.postValue(index_element.mangaId)
             }
         }

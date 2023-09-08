@@ -62,9 +62,6 @@ class TopCharacterPagingAdaptor(
         }
         holder.btnSave.let {
             it.setOnClickListener {
-                sp.edit().apply{
-                    putString("savedCharId", index_element.charId.toString())
-                }.apply()
                 viewModel._savedCharacterIdLiveData.postValue(index_element.charId)
             }
         }

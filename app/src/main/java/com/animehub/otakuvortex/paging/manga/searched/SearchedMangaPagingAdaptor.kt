@@ -13,15 +13,20 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.animehub.otakuvortex.R
 import com.animehub.otakuvortex.domain.modal.mamga.searchmanga.SearchedMangaData
+import com.animehub.otakuvortex.presentation.ui.favorite.FavoriteFragmentViewModel
 import com.bumptech.glide.Glide
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 
-class SearchedMangaPagingAdaptor: PagingDataAdapter<SearchedMangaData, SearchedMangaPagingAdaptor.SearchedMangaViewHolder>(COPARATOR) {
+class SearchedMangaPagingAdaptor(
+    private val viewModel: FavoriteFragmentViewModel
+): PagingDataAdapter<SearchedMangaData, SearchedMangaPagingAdaptor.SearchedMangaViewHolder>(COPARATOR) {
 
     private lateinit var sp: SharedPreferences
 
     inner class SearchedMangaViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
         val searchedImage = itemView.findViewById<ImageView>(R.id.tvSearchedImage)
         val searchedTitle = itemView.findViewById<TextView>(R.id.etSearchedName)
+        val btnSave = itemView.findViewById<FloatingActionButton>(R.id.btnSaveToFavoriteSearched)
     }
 
     companion object {
@@ -56,6 +61,11 @@ class SearchedMangaPagingAdaptor: PagingDataAdapter<SearchedMangaData, SearchedM
             it.findNavController().navigate(
                 R.id.action_searchmeFragment_to_infoFragment
             )
+        }
+        holder.btnSave.let {
+            it.setOnClickListener {
+                viewModel._savedMangaIdLiveData.postValue(indexElement.mangaId)
+            }
         }
     }
 
