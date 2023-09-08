@@ -85,21 +85,27 @@ class HomeFragment : Fragment(){
         showTopMangaList()
         showTopCharacterList()
 
-        favoriteViewModel.savedAnimeLiveData.observe(viewLifecycleOwner) {
-            viewLifecycleOwner.lifecycleScope.launch {
-                favoriteViewModel.insertFavoriteAnimeToDB(it)
+        viewLifecycleOwner.lifecycleScope.launch {
+            favoriteViewModel.savedAnimeLiveData.observe(viewLifecycleOwner) {
+                viewLifecycleOwner.lifecycleScope.launch {
+                    favoriteViewModel.insertFavoriteAnimeToDB(it)
+                }
             }
         }
 
-        favoriteViewModel.savedMangaLiveData.observe(viewLifecycleOwner){
-            viewLifecycleOwner.lifecycleScope.launch {
-                favoriteViewModel.insertFavoriteMangaToDB(it)
+        viewLifecycleOwner.lifecycleScope.launch {
+            favoriteViewModel.savedMangaLiveData.observe(viewLifecycleOwner){
+                viewLifecycleOwner.lifecycleScope.launch {
+                    favoriteViewModel.insertFavoriteMangaToDB(it)
+                }
             }
         }
 
-        favoriteViewModel.savedCharacterLiveData.observe(viewLifecycleOwner){
-            viewLifecycleOwner.lifecycleScope.launch {
-                favoriteViewModel.insertFavoriteCharacterToDB(it)
+        viewLifecycleOwner.lifecycleScope.launch {
+            favoriteViewModel.savedCharacterLiveData.observe(viewLifecycleOwner){
+                viewLifecycleOwner.lifecycleScope.launch {
+                    favoriteViewModel.insertFavoriteCharacterToDB(it)
+                }
             }
         }
 
