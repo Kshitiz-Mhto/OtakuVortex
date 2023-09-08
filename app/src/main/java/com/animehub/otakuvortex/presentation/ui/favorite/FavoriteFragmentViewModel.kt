@@ -43,7 +43,7 @@ class FavoriteFragmentViewModel@Inject constructor(
     var insertSuccessfullResponseForCharacter: MutableLiveData<Boolean> = _insertSuccessfullResponseForCharacter
 
     private val _deleteSuccessfullResponseForCharacter = MutableLiveData<Boolean>()
-    var deleteSuccessfullResponse: MutableLiveData<Boolean> = _deleteSuccessfullResponseForCharacter
+    var deleteSuccessfullResponseForCharacter: MutableLiveData<Boolean> = _deleteSuccessfullResponseForCharacter
 
     val _savedMangaLiveData = MutableLiveData<MangaContent>()
     val savedMangaLiveData: LiveData<MangaContent>
@@ -105,7 +105,7 @@ class FavoriteFragmentViewModel@Inject constructor(
 
     // for Character
 
-    fun getFavoriteMangaCharacterList(){
+    fun getFavoriteCharacterContentList(){
         viewModelScope.launch(Dispatchers.IO){
             val favoriteListState = db.characterContentRepository().getAllFavoriteCotent()
             _favoriteCharacterListValue.postValue(favoriteListState)
