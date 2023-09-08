@@ -12,9 +12,6 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.animehub.otakuvortex.data.local.model.AnimeContent
-import com.animehub.otakuvortex.data.local.model.CharacterContent
-import com.animehub.otakuvortex.data.local.model.MangaContent
 import com.animehub.otakuvortex.databinding.FragmentHomeBinding
 import com.animehub.otakuvortex.paging.anime.TopAnimePagingAdaptor
 import com.animehub.otakuvortex.paging.loaderadapter.LoaderAdaptor
@@ -118,6 +115,7 @@ class HomeFragment : Fragment(){
                 else if(state.error.isNotEmpty()){
                     Log.i("UI error", "lol")
                 }else if (state.topAnimeList != null) {
+                    binding.linearLayoutForTopAnime.visibility = View.VISIBLE
                     val topAnimeList = state.topAnimeList
                     topAnimeAdaptor.submitData(lifecycle, topAnimeList)
                 }
@@ -134,6 +132,7 @@ class HomeFragment : Fragment(){
                 else if(state.error.isNotEmpty()){
                     Log.i("UI error", "lol")
                 }else if (state.topMangaList != null) {
+                    binding.linearLayoutForTopManga.visibility = View.VISIBLE
                     val topMangaList = state.topMangaList
                     topMangaAdaptor.submitData(lifecycle, topMangaList)
                 }
@@ -150,6 +149,7 @@ class HomeFragment : Fragment(){
                 else if(state.error.isNotEmpty()){
                     Log.i("UI error", "lol")
                 }else if (state.topCharacterList != null) {
+                    binding.linearLayoutForTopCharacters.visibility = View.VISIBLE
                     val topCharacterList = state.topCharacterList
                     topCharacterAdaptor.submitData(lifecycle, topCharacterList)
                 }

@@ -60,7 +60,6 @@ class SearchmeFragment : Fragment() {
                 val searchText = query!!.lowercase(Locale.getDefault())
                 if (searchText.isNotEmpty() or searchText.isNotBlank()){
                     viewLifecycleOwner.lifecycleScope.launch {
-                        binding.linearLayoutSearchedAnime.visibility = View.VISIBLE
                         searchedAnimeViewModel.getSearchedAnimeList(searchText)
                         searchedAnimeViewModel.searchedAnimeListValue.collect{ state ->
                             when{
@@ -73,6 +72,7 @@ class SearchmeFragment : Fragment() {
                                 else -> {
                                     val animeList = state.searchedAnimeList
                                     if(animeList != null) {
+                                        binding.linearLayoutSearchedAnime.visibility = View.VISIBLE
                                         searchedAnimePagingAdaptor.submitData(
                                             lifecycle,
                                             animeList
@@ -83,7 +83,6 @@ class SearchmeFragment : Fragment() {
                         }
                     }
                     viewLifecycleOwner.lifecycleScope.launch {
-                        binding.linearLayoutSearchedManaga.visibility = View.VISIBLE
                         searchedMangaViewModel.getSearchedMangaList(searchText)
                         searchedMangaViewModel.searchedMangaListValue.collect{ stateo ->
                             when{
@@ -96,6 +95,7 @@ class SearchmeFragment : Fragment() {
                                 else -> {
                                     val mangaList = stateo.searchedMangaList
                                     if(mangaList != null) {
+                                        binding.linearLayoutSearchedManaga.visibility = View.VISIBLE
                                         searchedMangaPagingAdaptor.submitData(
                                             lifecycle,
                                             mangaList
