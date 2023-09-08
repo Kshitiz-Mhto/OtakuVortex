@@ -41,9 +41,11 @@ enabling easier updates,efficient testing, and adaptable changes across layers.
 	<img src="./assets/info_screenshot.png" alt="infoscreen" height="auto">
 </p>
 </td>
+</tr>
+<tr>
 <td>
 <p align="center">
-	<img src="./assets/character_info_screenshot.png" alt="infoscreen_character" height="auto">
+	<img src="./assets/favorite_screenshot.png" alt="favorite screen" height="auto">
 </p>
 </td>
 <td>
