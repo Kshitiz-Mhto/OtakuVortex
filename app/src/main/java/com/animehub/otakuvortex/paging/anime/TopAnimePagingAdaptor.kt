@@ -12,6 +12,7 @@ import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.animehub.otakuvortex.R
+import com.animehub.otakuvortex.data.local.model.AnimeContent
 import com.animehub.otakuvortex.domain.modal.anime.topanime.TopAnimeData
 import com.animehub.otakuvortex.presentation.ui.favorite.FavoriteFragmentViewModel
 import com.bumptech.glide.Glide
@@ -58,7 +59,13 @@ class TopAnimePagingAdaptor(
         }
         holder.btnSave.let {
             it.setOnClickListener {
-                viewModel._savedAnimeIdLiveData.postValue(index_element.animeId)
+                viewModel._savedAnimeLiveData.postValue(
+                    AnimeContent(
+                        index_element.animeId,
+                        index_element.title,
+                        index_element.imageUrl
+                    )
+                )
             }
         }
 

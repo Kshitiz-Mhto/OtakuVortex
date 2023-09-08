@@ -2,7 +2,6 @@ package com.animehub.otakuvortex.paging.anime.searched
 
 import android.content.Context
 import android.content.SharedPreferences
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,6 +12,7 @@ import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.animehub.otakuvortex.R
+import com.animehub.otakuvortex.data.local.model.AnimeContent
 import com.animehub.otakuvortex.domain.modal.anime.searchanime.SearchedAnimeData
 import com.animehub.otakuvortex.presentation.ui.favorite.FavoriteFragmentViewModel
 import com.bumptech.glide.Glide
@@ -61,7 +61,13 @@ class SearchedAnimePagingAdaptor(
         }
         holder.btnSave.let {
             it.setOnClickListener {
-                viewModel._savedAnimeIdLiveData.postValue(indexElement.animeId)
+                viewModel._savedAnimeLiveData.postValue(
+                    AnimeContent(
+                        indexElement.animeId,
+                        indexElement.title,
+                        indexElement.imageUrl
+                    )
+                )
             }
         }
 

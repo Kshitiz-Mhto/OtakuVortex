@@ -12,8 +12,6 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.animehub.otakuvortex.data.local.model.AnimeContent
-import com.animehub.otakuvortex.data.local.model.MangaContent
 import com.animehub.otakuvortex.databinding.FragmentSearchmeBinding
 import com.animehub.otakuvortex.paging.anime.searched.SearchedAnimePagingAdaptor
 import com.animehub.otakuvortex.paging.loaderadapter.LoaderAdaptor
@@ -126,15 +124,15 @@ class SearchmeFragment : Fragment() {
             footer = LoaderAdaptor()
         )
 
-        favoriteViewModel.savedAnimeIdLiveData.observe(viewLifecycleOwner) {
+        favoriteViewModel.savedAnimeLiveData.observe(viewLifecycleOwner) {
             viewLifecycleOwner.lifecycleScope.launch {
-                favoriteViewModel.insertFavoriteAnimeToDB(AnimeContent(it))
+                favoriteViewModel.insertFavoriteAnimeToDB(it)
             }
         }
 
-        favoriteViewModel.savedMangaIdLiveData.observe(viewLifecycleOwner){
+        favoriteViewModel.savedMangaLiveData.observe(viewLifecycleOwner){
             viewLifecycleOwner.lifecycleScope.launch {
-                favoriteViewModel.insertFavoriteMangaToDB(MangaContent(it))
+                favoriteViewModel.insertFavoriteMangaToDB(it)
             }
         }
 

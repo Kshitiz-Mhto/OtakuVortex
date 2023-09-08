@@ -11,6 +11,7 @@ import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.animehub.otakuvortex.R
+import com.animehub.otakuvortex.data.local.model.MangaContent
 import com.animehub.otakuvortex.domain.modal.mamga.topmanga.TopMangaData
 import com.animehub.otakuvortex.presentation.ui.favorite.FavoriteFragmentViewModel
 import com.bumptech.glide.Glide
@@ -55,7 +56,13 @@ class TopMangaPadingAdaptor(
         }
         holder.btnSave.let {
             it.setOnClickListener {
-                viewModel._savedMangaIdLiveData.postValue(index_element.mangaId)
+                viewModel._savedMangaLiveData.postValue(
+                    MangaContent(
+                        index_element.mangaId,
+                        index_element.title,
+                        index_element.imageUrl
+                    )
+                )
             }
         }
     }

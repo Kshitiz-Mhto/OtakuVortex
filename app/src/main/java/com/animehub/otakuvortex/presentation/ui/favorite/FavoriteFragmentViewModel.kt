@@ -45,17 +45,17 @@ class FavoriteFragmentViewModel@Inject constructor(
     private val _deleteSuccessfullResponseForCharacter = MutableLiveData<Boolean>()
     var deleteSuccessfullResponse: MutableLiveData<Boolean> = _deleteSuccessfullResponseForCharacter
 
-    val _savedMangaIdLiveData = MutableLiveData<Int>()
-    val savedMangaIdLiveData: LiveData<Int>
-        get() = _savedMangaIdLiveData
+    val _savedMangaLiveData = MutableLiveData<MangaContent>()
+    val savedMangaLiveData: LiveData<MangaContent>
+        get() = _savedMangaLiveData
 
-    val _savedAnimeIdLiveData = MutableLiveData<Int>()
-    val savedAnimeIdLiveData: LiveData<Int>
-        get() = _savedAnimeIdLiveData
+    val _savedAnimeLiveData = MutableLiveData<AnimeContent>()
+    val savedAnimeLiveData: LiveData<AnimeContent>
+        get() = _savedAnimeLiveData
 
-    val _savedCharacterIdLiveData = MutableLiveData<Int>()
-    val savedCharacterIdLiveData: LiveData<Int>
-        get() = _savedCharacterIdLiveData
+    val _savedCharacterLiveData = MutableLiveData<CharacterContent>()
+    val savedCharacterLiveData: LiveData<CharacterContent>
+        get() = _savedCharacterLiveData
 
     // for anime
 

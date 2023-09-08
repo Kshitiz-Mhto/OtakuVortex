@@ -12,6 +12,7 @@ import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.animehub.otakuvortex.R
+import com.animehub.otakuvortex.data.local.model.MangaContent
 import com.animehub.otakuvortex.domain.modal.mamga.searchmanga.SearchedMangaData
 import com.animehub.otakuvortex.presentation.ui.favorite.FavoriteFragmentViewModel
 import com.bumptech.glide.Glide
@@ -64,7 +65,13 @@ class SearchedMangaPagingAdaptor(
         }
         holder.btnSave.let {
             it.setOnClickListener {
-                viewModel._savedMangaIdLiveData.postValue(indexElement.mangaId)
+                viewModel._savedMangaLiveData.postValue(
+                    MangaContent(
+                        indexElement.mangaId,
+                        indexElement.title,
+                        indexElement.imageUrl
+                    )
+                )
             }
         }
     }
